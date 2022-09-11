@@ -1,19 +1,20 @@
 # TAS-Spec-Soft
-Specifying for Trustworthiness for a Soft Gripper
+Specifying for Trustworthiness of a Soft Gripper
 
-This is the github repository created for the "**Specifying for Trustworthiness for a Soft Gripper**" Journal article (TAS-Functionality WP1, WP6, WP4). The files are hosted at the GitHub account for the Trustworthy Systems Lab (https://github.com/TSL-UOB), University of Bristol. The paper source code is in LaTex. 
+This is the github repository created for the "**Specifying for Trustworthiness of a Soft Gripper**" Journal article (TAS-Functionality Node: WP1, WP6, WP4). The files are hosted at the GitHub account for the Trustworthy Systems Lab (https://github.com/TSL-UOB), University of Bristol. The paper source code is in LaTex. 
 Template used: "IEEE Robotics and Automation Letters".
 
 => Template tex file: source/Spec-SoftRobotics-Template.tex
 
 => Template bib file: source/Spec-SoftRobotics-Bibliography.bib
 
-Any comments and queries please email to: dhaminda.abeywickrama@bristol.ac.uk
+Please push only Source Files (.tex, .bib, figures) to the "main" branch. Please do not create branches in the repository.
 
-========================================================================================================================================
+===============================================================================
+
 11 September, 2022:
 
-**Using GitHub with your Overleaf Account (please refer to email on 11 September)** 
+**Using GitHub with your Overleaf Account (ref: email on 11 September)** 
 
 UoB is providing Overleaf "Professional" features for all students, faculty and staff who would like to use a collaborative, online LaTeX editor for their projects. One can Sign up (or sign in) to claim a free 20GB Pro+ account on Overleaf. https://www.overleaf.com/edu/bristol
 
