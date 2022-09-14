@@ -16,6 +16,7 @@
 
 %\title{A Sample Article Using IEEEtran.cls\\ for IEEE Journals and Transactions}
 \title{Specifying for Trustworthiness of a Soft Gripper}
+%TODO: Consider using different word instead of trustworthy as this is not well defined.
 
 \author{Author1\_Name, Author2\_Name, ...AuthorN\_Name,
 	\thanks{Author1 and Author2 are with the Department of Dep1\_Name (email: , )}
@@ -41,8 +42,9 @@
 \maketitle
 
 \begin{abstract}
-With the growing popularity of soft robotic systems, ensuring the trustworthiness of the soft grippers is essential. 
-There are a number of techniques for demonstrating trustworthiness and common to all these techniques is the need to formulate \emph{specifications}, which so far has received very little attention by the soft robotics community. 
+Soft robotics is an emerging technology with great potential for commercialisation. Soft gripping is considered to be the most mature area in soft robotics with many instances have been used in industries for various application ranging from automotive to grocery picking.
+To accelerate the adoption of soft robots, it is essential that the technology developed must have trustworthiness.
+There are a number of techniques for demonstrating trustworthiness and common to all these techniques is the need to formulate \emph{specifications}, which so far has received little attention by the soft robotics community.
 The main contribution of this article is an extensive specification for trustworthiness of a soft gripper that covers both functional and non-functional requirements, such as reliability, safety, adaptability and predictability. 
 We also highlight the need to promote \emph{verifiability} as a first-class objective in the design of soft robotic systems. 
 We explore our study using a pick-and-place of grocery items using a recycled soft gripper.
@@ -152,13 +154,15 @@ These properties are especially significant for a soft gripper in situations suc
 		\hline
 		RQ1.4 & The fingers \emph{shall} be in a stable state -- pre-pressurized/inflated 10 times, prior to being used. \\ 
 		\hline
-		RQ1.5 & The fingers \emph{shall} be inflated with a pressure between X-Y* pressure range. (X, Y to be defined)\\
+		RQ1.5 & The fingers \emph{shall} be inflated with a pressure between X-Y* pressure range. (X, Y to be defined, input number from recycled gripper paper)\\
 		\hline
-		RQ1.6 & The fingers \emph{shall} be inflated with a flow rate between X-Y* range. (X, Y to be defined)\\	
+		RQ1.6 & The fingers \emph{shall} be inflated with a flow rate between X-Y* range. (X, Y to be defined, we might have to measure this)\\
 		\hline
-		RQ1.7 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in dropping of an item across 100 hours of operation (i.e. hold it without dropping it for at least 10 seconds $\ge$ 90\% of time). \\			\hline	
+		RQ1.7 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in dropping of an item across 100 hours of operation (i.e. hold it without dropping it for at least 10 seconds $\ge$ 90\% of time). \\			\hline
+
 		RQ1.8 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in damaging of an item across 100 hours of operation.  \\		[1ex] 		
 		\hline
+% TODO: could pull these number from SOMA papers or asking Ocado to confirm directly.
 	\end{tabular}
 \end{center}
 
