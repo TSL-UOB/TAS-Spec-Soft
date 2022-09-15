@@ -6,11 +6,26 @@
 \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
 \usepackage{textcomp}
 \usepackage{stfloats}
-\usepackage{url}
+%\usepackage{url}
 \usepackage{verbatim}
 \usepackage{graphicx}
 \usepackage{cite}
+
+\usepackage[breaklinks]{hyperref}
+\usepackage{url}
+\usepackage{breakurl}
+%\usepackage{hyperref}
+%\hypersetup{breaklinks=true} % set automatically by hyperref?
 \hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+
+%https://tex.stackexchange.com/questions/479374/does-the-hyperref-breaklinks-option-have-any-effect
+  \expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%  save the current one
+	\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+	\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+	\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+	\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+	\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+	\do\Y\do\Z\do\/\do-}
 
 \begin{document}
 
@@ -43,7 +58,7 @@
 \begin{abstract}
 With the growing popularity of soft robotic systems, ensuring the trustworthiness of the soft grippers is essential. 
 There are a number of techniques for demonstrating trustworthiness and common to all these techniques is the need to formulate \emph{specifications}, which so far has received very little attention by the soft robotics community. 
-The main contribution of this article is an extensive specification for trustworthiness of a soft gripper that covers both functional and non-functional requirements, such as reliability, safety, adaptability and predictability. 
+The main contribution of this article is an extensive specification for trustworthiness of a soft gripper that covers both functional and non-functional requirements, such as reliability, safety, adaptability, predictability, ethics and regulation. 
 We also highlight the need to promote \emph{verifiability} as a first-class objective in the design of soft robotic systems. 
 We explore our study using a pick-and-place of grocery items using a recycled soft gripper.
 \end{abstract}
@@ -55,27 +70,24 @@ We explore our study using a pick-and-place of grocery items using a recycled so
 \section{Introduction}\label{introduction}
 With the growing popularity of soft robotic systems, ensuring the trustworthiness of the soft grippers is crucial. 
 \emph{Trust} may vary, as it can be gained and lost over time, and different research disciplines define trust in different ways. 
-Autonomous systems (ASs), such as soft robotic systems, are considered \emph{trustworthy} when the design, engineering, and operation of these systems generate positive outcomes and mitigate outcomes which can be harmful~\cite{Naiseh2022}.
+Autonomous systems (ASs) (e.g. soft robotic systems) are considered \emph{trustworthy} when the design, engineering, and operation of these systems generate positive outcomes and mitigate outcomes which can be harmful~\cite{Naiseh2022}.
 Trustworthiness can be dependent on many factors such as: (i) explainability, accountability and understandability to different users; (ii) robustness in dynamic and uncertain environments; (iii) assurance of their design and operation through verification and validation (V\&V) activities; (iv) confidence in their ability to adapt their functionality as required; (v) security against attacks on the systems, users, and deployed environment; (vi) governance and regulation of their design and operation; and (vii) consideration of ethics and human values in their deployment and use~\cite{Naiseh2022}. 
 
-There are various techniques for demonstrating trustworthiness of ASs, such as synthesis, formal verification at design time, runtime verification or monitoring, and test-based methods \cite{Abeywickrama2022}. 
+There are various techniques for demonstrating trustworthiness of ASs, such as synthesis, formal verification at design-time, runtime verification or monitoring, and test-based methods \cite{Abeywickrama2022}. 
 But, common to all these techniques is the need to formulate \emph{specifications}. 	
 According to the ISO standard for systems and software engineering vocabulary~\cite{ISO24765:2017}, a \emph{specification} is a detailed formulation that provides a definitive description of a system for the purpose of developing or validating the system. 
-However, formulating specifications of soft robotic grippers has received very little attention by the soft robotics community where most existing works only describe some dimensions or parameters of the end-effector or the gripping system \cite{Hong2022,Bhattacharya2019,Tadakuma2020,Loh2014,Nishikawa2019,Mohan2020}.  
+However, the soft robotics community has so far provided very little attention to formulating specifications of soft robotic grippers where most existing works only describe some parameters of the end-effector (e.g. \cite{Hong2022,Bhattacharya2019,Tadakuma2020,Loh2014,Nishikawa2019,Mohan2020}).  
 
-Meanwhile, \emph{verifiability} is considered key for improving trustworthiness, which can be achieved by considering verification early as an integral part during specification and system design \cite{Mousavi2022}. This will essentially lead to systems that are by their construction are worthy of our trust. To this end, one can seek to promote verifiability to a first-class system design objective \cite{Eder2021}. 
-
-The main contributions of this paper are as follows:
+Meanwhile, \emph{verifiability} is considered key for improving trustworthiness, which can be achieved by considering verification early as an integral part during specification and system design \cite{Mousavi2022}. Verifiability will essentially lead to systems that are by their construction are worthy of our trust, and to this end, it can be promoted to a first-class system design objective \cite{Eder2021}. The main contributions of this paper are as follows:
 \begin{itemize}
-	\item We provide an extensive specification to ensure trustworthiness of a soft gripper with requirements that are both functional as well as non-functional, such as reliability, safety, adaptability and predictability. ...
-	\item We highlight the importance for promoting \emph{verifiability} as a first-class objective in the design of soft robotic grippers. ...
+	\item We provide an extensive specification to ensure trustworthiness of a soft gripper with requirements that are both functional as well as non-functional, such as reliability, safety, adaptability, predictability, ethics and regulation.
+	\item We highlight the importance for promoting \emph{verifiability} as a first-class objective in the design of soft robotic grippers. 
 \end{itemize}
-We explore our study using a pick-and-place task of grocery items using a recycled soft gripper \cite{Partridge2022}.
-
-The rest of the paper is organized as follows. 
+We explore our study using a case study that involves pick-and-place task of grocery items using a recycled soft gripper \cite{Partridge2022}. 
+%The rest of the paper is organized as follows. 
 In Section~\ref{background-relatedwork}, we provide background information and related works to the present study. 
 Section~\ref{specification-gripper} proposes a detailed specification of a soft gripper. 
-Finally, Section~\ref{discussion-conclusions} provides a discussion of our study and conclusions. 
+Finally, Section~\ref{discussion-conclusions} provides a discussion of our study exploring verifiability, and conclusions. 
 
 \section{Background and Related Work}\label{background-relatedwork}
 
@@ -91,25 +103,23 @@ Finally, Section~\ref{discussion-conclusions} provides a discussion of our study
 
 [Short Summary of recycled soft gripper paper by \cite{Partridge2022}, which is used in the current study]
 \\\\\\
-\subsubsection{Case Study (Pick-and-Place of Grocery Items)}
+\subsubsection{Pick-and-Place of Grocery Items Case Study}
 Let us consider an automated warehouse, where items are picked from storage crates which then need to be placed in delivery crates for assembling and delivery. 
 The items vary in their shape, size and packaging which make the automation challenging. 
 Other challenges are constrained and relatively cluttered space to operate on; and fragile or deformable nature of certain items. 
-Furthermore, there can be other uncertainties, such as manufacturing inconsistencies; and temporal nature of the fabrics used in the gripper which can lead to graceful degradation of performance. 
+Furthermore, there can be other uncertainties, such as manufacturing inconsistencies; and temporal nature of the fabrics used in the gripper which can lead to degradation of performance. 
 
 In the use case, we consider four \emph{classes} of items: (i) \emph{soft–fragile} items (e.g. cake, bread, strawberry, bayberry), (ii) \emph{soft–non-fragile} items (e.g. sponge), (iii) \emph{hard–fragile} items (e.g. light bulb, egg), (iv) \emph{hard–non-fragile} items (e.g. plastic spoon). 
 The objects being picked can be regular-shaped (e.g. sphere, cube, cone, pyramid, cylinder) or irregular-shaped ones (e.g. strawberries).
 %Soft finger can conform to the object’s surface with stable grasping and environmental endurance.
 The robotic pick-and-place task can be broken down into a pipeline of four main tasks: (i) pre-grasping, (ii) ascension (grasping), (iii) translation (transport), and (iv) descension (placement). 
-An example of this case study is the grocery use case of Ocado, which is the world's largest online only supermarket \cite{Triantafyllou2019, Sotiropoulos2018}. \\\\\\
+An example is the grocery use case of Ocado, which is considered as the world's largest online only supermarket \cite{Triantafyllou2019, Sotiropoulos2018}. \\\\\\
 
 \subsubsection{Standards}
-While there have been no industry standards defined on soft robotic grippers, there are several related standards in the area of rigid robotics, which can provide insights into the safe and reliable operation of soft grippers. ...
+While there are no industry standards defined on soft robotic grippers, there are several related standards in the area of rigid robotics which can provide insights into the safe operation of soft grippers. 
 %In this subsection, we highlight the main related standards to specifying a soft gripper. 
 
-\emph{Proposed Standard Terminology for Robotic Hands and Associated Performance Metrics} standard provides a set of terminology and associated definition for robotic hands \cite{Falco2018}. ...
-
-\emph{ISO 14539:2000}  standard focuses on the functionalities of end effectors and concentrates on grasp type grippers \cite{ISO14539:2000}. It provides terms to describe object handling and terms of functions, structures, and elements of grasp-type grippers. ...
+\emph{Proposed Standard Terminology for Robotic Hands and Associated Performance Metrics} standard provides a set of terminology and associated definition for robotic hands \cite{Falco2018}.\emph{ISO 14539:2000} standard focuses on the functionalities of end effectors and concentrates on grasp type grippers \cite{ISO14539:2000}. It provides terms to describe object handling and terms of functions, structures, and elements of grasp-type grippers. ...
 
 
 \emph{ISO 10218-1} and \emph{ISO 10218-2} provide safety requirements for industrial robots and their integration.
@@ -152,12 +162,9 @@ These properties are especially significant for a soft gripper in situations suc
 		\hline
 		RQ1.4 & The fingers \emph{shall} be in a stable state -- pre-pressurized/inflated 10 times, prior to being used. \\ 
 		\hline
-		RQ1.5 & The fingers \emph{shall} be inflated with a pressure between X-Y* pressure range. (X, Y to be defined)\\
+		RQ1.5 & The fingers \emph{shall} be inflated with a pressure between 3-4 psi pressure range. \emph{(Note: \cite{Partridge2022})} \\
 		\hline
-		RQ1.6 & The fingers \emph{shall} be inflated with a flow rate between X-Y* range. (X, Y to be defined)\\	
-		\hline
-		RQ1.7 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in dropping of an item across 100 hours of operation (i.e. hold it without dropping it for at least 10 seconds $\ge$ 90\% of time). \\			\hline	
-		RQ1.8 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in damaging of an item across 100 hours of operation.  \\		[1ex] 		
+		RQ1.6 & The fingers \emph{shall} be inflated with a flow rate between 2-3.2 L/min range. \emph{(Note: \cite{DEWIN2022})} \\		[1ex] 		
 		\hline
 	\end{tabular}
 \end{center}
@@ -170,9 +177,12 @@ These properties are especially significant for a soft gripper in situations suc
 		\hline
 		RQ2.2 & The gripper \emph{shall} hold the item being gripped without dropping it for at least 10 seconds 95\% of the time.  \emph{(Note: \cite{Sotiropoulos2018}, pg. 652))}\\ 
 		\hline
-		RQ2.3 & The gripper \emph{shall} successfully maintain grasp during translation of the gripped item for a maximum velocity and acceleration of 0.03 m/s and 150 mm/s$^2$ . \emph{(Note: \cite{Triantafyllou2019}, pg. 5; \cite{Cheng2021}, pg. 15))}\\
+		RQ2.3 & The gripper \emph{shall} successfully maintain grasp during translation of the gripped item for a maximum velocity and acceleration of 0.03 m/s and 150 mm/s$^2$. \emph{(Note: \cite{Triantafyllou2019}, pg. 5; \cite{Cheng2021}, pg. 15))}\\
 		\hline
-		RQ2.4& The gripper \emph{shall} successfully grasp when the rate of inflation is in the range of X to Y (min to max). (Assumption: Two-finger gripper is used)\\	[1ex] 
+		RQ2.4& The gripper \emph{shall} successfully grasp when the rate of inflation is in the range of 2-3.2 L/min. \emph{(Note: \cite{DEWIN2022})}\\
+		\hline
+		RQ2.5 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in dropping of an item across 100 hours of operation. \\			\hline	
+		RQ2.6 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in damaging of an item across 100 hours of operation.  \\		[1ex] 		
 		\hline
 	\end{tabular}
 \end{center}
@@ -185,18 +195,21 @@ RQ3.1 & The gripper \emph{shall} hold items of different sizes up to a maximum
 \hline
 RQ3.2 & The gripper \emph{shall} hold items of different shapes (e.g. sphere, cube, cone, pyramid, cylinder) without dropping it for at least 10 seconds 95\% of the time. \\
 \hline
-RQ3.3 & The gripper \emph{shall} hold items, which can be of regular or irregular shape, without dropping it for at least 10 seconds 95\%* of the time. \\ 
+RQ3.3 & The gripper \emph{shall} hold items, which can be of regular or irregular shape, without dropping it for at least 10 seconds 95\% of the time. \\ 
 \hline
-RQ3.4 & Non-symmetrical objects \emph{shall} be successfully grasped (no slipping) when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.  \\ 
+RQ3.4 & The gripper \emph{shall} hold an item independent of its orientation without dropping it for at least 10 seconds 95\% of the time. \\ 	 
 \hline
-RQ3.5 & Non-symmetrical objects \emph{shall} not be dropped when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.\\
+\emph{RQ3.5} & \emph{Non-symmetrical objects \emph{shall} be successfully grasped (no slipping) when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.}  \\ 
 \hline
-RQ3.6 & Non-symmetrical objects \emph{shall} not be damaged when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.\\
+\emph{RQ3.6} & \emph{Non-symmetrical objects \emph{shall} not be dropped when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.}\\
 \hline
-RQ3.7 & For non-symmetrical objects, the grasping contact position (focus) of the gripper \emph{shall} be $\le$ X mm from the centre of the mass of the object. (Note: gripper pose agnostic, does not need to be captured).\\	[1ex] 
+\emph{RQ3.7} & \emph{Non-symmetrical objects \emph{shall} not be damaged when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.}\\
+\hline
+\emph{RQ3.8} & \emph{For non-symmetrical objects, the grasping contact position (focus) of the gripper \emph{shall} be $\le$ X mm from the centre of the mass of the object. (Note: gripper pose agnostic, does not need to be captured).}\\	[1ex] 
 \hline
 	\end{tabular}
 \end{center}
+\noindent Note: Requirements RQ3.5--RQ3.8 have been removed.
 
 \subsection{Safety}\label{safety}
 \begin{center}
