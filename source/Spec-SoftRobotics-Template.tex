@@ -31,6 +31,7 @@
 
 %\title{A Sample Article Using IEEEtran.cls\\ for IEEE Journals and Transactions}
 \title{Specifying for Trustworthiness of a Soft Gripper}
+%TODO: Consider using different word instead of trustworthy as this is not well defined.
 
 \author{Author1\_Name, Author2\_Name, ...AuthorN\_Name,
 	\thanks{Author1 and Author2 are with the Department of Dep1\_Name (email: , )}
@@ -56,9 +57,10 @@
 \maketitle
 
 \begin{abstract}
-With the growing popularity of soft robotic systems, ensuring the trustworthiness of the soft grippers is essential. 
-There are a number of techniques for demonstrating trustworthiness and common to all these techniques is the need to formulate \emph{specifications}, which so far has received very little attention by the soft robotics community. 
-The main contribution of this article is an extensive specification for trustworthiness of a soft gripper that covers both functional and non-functional requirements, such as reliability, safety, adaptability, predictability, ethics and regulation. 
+Soft robotics is an emerging technology in which engineers create flexible devices for use in a variety of applications. %, such as surgery, prosthetics, space exploration, and grocery picking. 
+Soft gripping is considered to be the most mature area in soft robotics, and to advance the adoption of soft robots ensuring their trustworthiness is essential. 
+There are a number of techniques for demonstrating trustworthiness and common to all these techniques is the need to formulate \emph{specifications}, which so far has received little attention by the soft robotics community.
+The main contribution of this article is an extensive specification for trustworthiness of a soft gripper that covers both functional and non-functional requirements, such as reliability, safety, adaptability, predictability, ethics and regulation.  
 We also highlight the need to promote \emph{verifiability} as a first-class objective in the design of soft robotic systems. 
 We explore our study using a pick-and-place of grocery items using a recycled soft gripper.
 \end{abstract}
@@ -68,7 +70,10 @@ We explore our study using a pick-and-place of grocery items using a recycled so
 \end{IEEEkeywords}
 
 \section{Introduction}\label{introduction}
-With the growing popularity of soft robotic systems, ensuring the trustworthiness of the soft grippers is crucial. 
+%With the growing popularity of soft robotic systems, ensuring the trustworthiness of the soft grippers is crucial. 
+Soft robotics is an emerging technology in which engineers create flexible devices for use in a variety of applications, such as surgery, prosthetics, space exploration and grocery picking. 
+%Soft gripping is considered to be the most mature area in soft robotics, and to advance the adoption of soft robotic systems ensuring their trustworthiness is essential. 
+Soft gripping is considered to be the most mature area in soft robotics, and to advance the adoption of soft robotics ensuring their trustworthiness is essential. 
 \emph{Trust} may vary, as it can be gained and lost over time, and different research disciplines define trust in different ways. 
 Autonomous systems (ASs) (e.g. soft robotic systems) are considered \emph{trustworthy} when the design, engineering, and operation of these systems generate positive outcomes and mitigate outcomes which can be harmful~\cite{Naiseh2022}.
 Trustworthiness can be dependent on many factors such as: (i) explainability, accountability and understandability to different users; (ii) robustness in dynamic and uncertain environments; (iii) assurance of their design and operation through verification and validation (V\&V) activities; (iv) confidence in their ability to adapt their functionality as required; (v) security against attacks on the systems, users, and deployed environment; (vi) governance and regulation of their design and operation; and (vii) consideration of ethics and human values in their deployment and use~\cite{Naiseh2022}. 
@@ -164,7 +169,7 @@ These properties are especially significant for a soft gripper in situations suc
 		\hline
 		RQ1.5 & The fingers \emph{shall} be inflated with a pressure between 3-4 psi pressure range. \emph{(Note: \cite{Partridge2022})} \\
 		\hline
-		RQ1.6 & The fingers \emph{shall} be inflated with a flow rate between 2-3.2 L/min range. \emph{(Note: \cite{DEWIN2022})} \\		[1ex] 		
+		RQ1.6 & The fingers \emph{shall} be inflated with a flow rate between 2-3.2 L/min range. \emph{(Note: \cite{DEWIN2022})} \\	[1ex] 		
 		\hline
 	\end{tabular}
 \end{center}
