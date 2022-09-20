@@ -14,6 +14,7 @@
 \usepackage[breaklinks]{hyperref}
 \usepackage{url}
 \usepackage{breakurl}
+\usepackage[normalem]{ulem}
 %\usepackage{hyperref}
 %\hypersetup{breaklinks=true} % set automatically by hyperref?
 \hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
@@ -70,7 +71,7 @@ We explore our study using a pick-and-place of grocery items using a recycled so
 \end{IEEEkeywords}
 
 \section{Introduction}\label{introduction}
-Soft robotics is an emerging technology in which engineers create flexible devices for use in a variety of applications, such as surgery, prosthetics, space exploration and grocery picking. 
+Soft robotics is an emerging technology in which engineers create flexible devices for use in a variety of applications, such as surgery, prosthetics, space exploration, and grocery picking. 
 Soft gripping is considered to be the most mature area in soft robotics, and ensuring their trustworthiness is essential to advance the adoption of soft robots. 
 \emph{Trust} may vary, as it can be gained and lost over time, and different research disciplines define trust in different ways. 
 Autonomous systems (ASs) (e.g. soft robotic systems) are considered \emph{trustworthy} when the design, engineering, and operation of these systems generate positive outcomes and mitigate outcomes which can be harmful~\cite{Naiseh2022}.
@@ -127,8 +128,8 @@ While there are no industry standards defined on soft robotic grippers, there ar
 
 \emph{ISO 10218-1} and \emph{ISO 10218-2} provide safety requirements for industrial robots and their integration.
 Meanwhile, \emph{ISO/TS 15066} provides safety requirements for collaborative industrial robot systems and work environment. 
-These standards provides insights into the safe operation of a robotic gripper. ...
-In service robotics, \emph{ISO 13482 }covers the hazards presented by the robots and devices for applications in non-industrial environments for providing services. \emph{ISO 23482-1} and \emph{ISO 23482-2} standards extend ISO 13482 with guidance and methods that can be used to test personal care robots. ...
+%These standards provides insights into the safe operation of a robotic gripper. ...
+%In service robotics, \emph{ISO 13482 }covers the hazards presented by the robots and devices for applications in non-industrial environments for providing services. \emph{ISO 23482-1} and \emph{ISO 23482-2} standards extend ISO 13482 with guidance and methods that can be used to test personal care robots. ...
 
 
 
@@ -138,7 +139,7 @@ In service robotics, \emph{ISO 13482 }covers the hazards presented by the robots
 Formulating specifications of soft robotic grippers has received very little attention by the soft robotics community where most existing works only describe some parameters of the end-effector \cite{Hong2022,Bhattacharya2019,Tadakuma2020,Loh2014,Nishikawa2019,Mohan2020}.  ...
 %Existing works proposed on soft robotics grippers provide specifications of some dimensions of parameters of an end-effector, such as size, height, weight, width, depth, material dimensions \cite{Hong2022,Bhattacharya2019,Tadakuma2020,Loh2014,Nishikawa2019,Mohan2020}. ...
 
-\subsubsection{Approaches on trustworthiness properties}
+\subsubsection{Approaches on trustworthiness properties}[Draft]
 In \cite{Cheng2021}, the authors propose a soft-rigid gripper actuated by a linear-extension soft pneumatic actuator in order to achieve low-damage gripping... In \cite{Liu2021}, the authors present a new compliant soft robotic gripper for objects handling and cap manipulation through the coordination of three soft fingers and in-hand manipulation.... In\cite{Chen2018}, the authors synthesize a soft cable-driven gripper by recasting its mechanical design as a topology optimization problem... In \cite{Cai2021}, a pneumatic webbed soft gripper to grasp unstructured and fragile objects has been developed and evaluated... In \cite{Hwang2020}, the authors introduce a reinforced soft gripper with a mechanically strengthened electro adhesion pad and a multi-layered dielectric elastomer actuator, for a practical robotic application... In \cite{Shin2021}, the authors present a soft gripper that improves on the Fin Ray finger for enhanced gripping capability... However, these approaches are largely on improving adaptability of the gripper; they do not cover a broad range of trustworthiness properties as considered in our study. Also, these works do not provide a wide-ranging specification for trustworthiness as our work...\\
 
 Approaches on pick-and-place tasks (e.g. SoMa project and Ocado grocery example) \cite{Negrello2020,Triantafyllou2019,Sotiropoulos2018, Pozzi2016,Bianchi2018}...
@@ -149,7 +150,7 @@ These properties are especially significant for a soft gripper in situations suc
 \emph{Predictability} concerns the ability of a system or component to perform its tasks reliably. ...
 \emph{Reliability} is defined as the ``ability of a system or component to perform its required functions under stated conditions for a specified period of time" \cite{ISO24765:2017}. 
 \emph{Adaptability} is defined as the ``degree to which a product or system can effectively and efficiently be adapted for different or evolving hardware, software or other operational or usage environments" \cite{ISO24765:2017}. 
-\emph{Safety} is defined as an ``expectation that a system does not, under defined conditions, lead to a state in which human life, health,property, or the environment is endangered" \cite{ISO24765:2017}.
+\emph{Safety} is defined as an ``expectation that a system does not, under defined conditions, lead to a state in which human life, health,property, or the environment is endangered" \cite{ISO24765:2017}. However, with respect to safety of a soft gripper, we consider safety from the viewpoint of the item being gripped...
 ...
 
 
@@ -184,8 +185,8 @@ These properties are especially significant for a soft gripper in situations suc
 		\hline
 		RQ2.4& The gripper \emph{shall} successfully grasp when the rate of inflation is in the range of 2-3.2 L/min. \emph{(Note: \cite{DEWIN2022})}\\
 		\hline
-		RQ2.5 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in dropping of an item across 100 hours of operation. \\			\hline	
-		RQ2.6 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in damaging of an item across 100 hours of operation.  \\		[1ex] 		
+		RQ2.5 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in dropping of an item across 100 hours of operation. (comment by SW: consider degradation rate instead?) \\			\hline	
+		RQ2.6 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in damaging of an item across 100 hours of operation.  (comment by SW: consider degradation rate instead?) \\		[1ex] 		
 		\hline
 	\end{tabular}
 \end{center}
@@ -202,17 +203,16 @@ RQ3.3 & The gripper \emph{shall} hold items, which can be of regular or irregu
 \hline
 RQ3.4 & The gripper \emph{shall} hold an item independent of its orientation without dropping it for at least 10 seconds 95\% of the time. \\ 	 
 \hline
-\emph{RQ3.5} & \emph{Non-symmetrical objects \emph{shall} be successfully grasped (no slipping) when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.}  \\ 
+\emph{\sout{RQ3.5}} & \emph{\sout{Non-symmetrical objects \emph{shall} be successfully grasped (no slipping) when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.}}  \\ 
 \hline
-\emph{RQ3.6} & \emph{Non-symmetrical objects \emph{shall} not be dropped when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.}\\
+\emph{\sout{RQ3.6}} & \emph{\sout{Non-symmetrical objects \emph{shall} not be dropped when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.}}\\
 \hline
-\emph{RQ3.7} & \emph{Non-symmetrical objects \emph{shall} not be damaged when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.}\\
+\emph{\sout{RQ3.7}} & \emph{\sout{Non-symmetrical objects \emph{shall} not be damaged when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.}}\\
 \hline
-\emph{RQ3.8} & \emph{For non-symmetrical objects, the grasping contact position (focus) of the gripper \emph{shall} be $\le$ X mm from the centre of the mass of the object. (Note: gripper pose agnostic, does not need to be captured).}\\	[1ex] 
+\emph{\sout{RQ3.8}} & \emph{\sout{For non-symmetrical objects, the grasping contact position (focus) of the gripper \emph{shall} be $\le$ X mm from the centre of the mass of the object. (Note: gripper pose agnostic, does not need to be captured).}}\\	[1ex] 
 \hline
 	\end{tabular}
 \end{center}
-\noindent Note: Requirements RQ3.5--RQ3.8 have been removed.
 
 \subsection{Safety}\label{safety}
 \begin{center}
@@ -239,6 +239,10 @@ RQ3.4 & The gripper \emph{shall} hold an item independent of its orientation wi
 
 ...
 \paragraph{Verifiability} 
+In this subsection, we will discuss how we propose to make the requirements verifiable (raw requirements to verifiable requirements, and explain the delta)...
+
+System engineers need to design the system for \textit{verifiability}, as the ultimate purpose of specifications is verifying that the end product exhibits the intended properties \cite{Gerson1993}. This requires the intended properties to be demonstrable, i.e. that knowledge of the end result needs to be attainable. Avoiding negative requirements and including numerical tolerances are not the only means of writing requirements for verifiability.  ...
+
 The notion of \emph{verifiability} is considered key for improving trustworthiness of an AS (e.g. soft robot) \cite{Mousavi2022}. 
 A unified and holistic approach to verifiability will fundamentally change the approach to verification of ASs and it will lead to systems that are by their construction are worthy of our trust. 
 The key insight here is that verifiability can be achieved by considering verification early, for example during specification and system design. 
@@ -266,6 +270,44 @@ Furthermore, the underlying verification framework should connect all these doma
 	\item Also, how we can provide for domain abstractions...
 \end{itemize}
 ...\\
+
+
+%Discuss how the requirements in the specification can be made verifiable. Discuss raw requirements... verifiable version and the delta...
+%Usability and Verifiability of Secure Features for Authenticating Identity
+%Verifiability differs from verification that in verifiability it is unknown at the start what is the level of verification can be done to the feature.
+%
+%
+%Verifiability differs from verification that in verifiability it is unknown at the start
+%what is the level of verification can be done to the feature.
+%
+%Verification should be raised to a design concern, which is what verifiability is about. 
+%So do not state requirements that you don't know how to verify the moment state to requirement. You need to confirm how you would verify it.
+%And if you can't do that, it's not worth it.
+%
+%the generic version, and then the instantiation...
+%
+%How do you make this verifiable? Well, in order to make it verifiable, we need to know these things, and here is a refined version of this step we can deem verifiable because we've now instantiated it. But look at 1.5 and 1.5 in the original requirements.
+%
+%Raw version.. verifiable version...
+%delta for 
+%
+%what a proper  curve shall be or what is straightness
+%
+%to make a verifiable spec what needs to do
+%
+%visible the delta... raw sets of reqts.. purpose of this section.. skim them how would i do it... KE
+%what are the techniques 
+%process should go through
+%
+%change between the original raw instantiation of raw specification
+%designer, req eng... question is how do you verify it
+%designer might come up with an idea
+%
+%what the delta is between the raw and the what we consider verifiable
+%
+%purpose of this section is to highlight that that's not enough to to make verifiability
+
+
 \cite{Cheng2021,Bhattacharya2019,Bianchi2018,Cai2021,Chen2018,Hong2022,Farrell2022,Hwang2020,Liu2021,Loh2014,Mohan2020,Negrello2020,Nishikawa2019,Pozzi2016,Shin2021,Sotiropoulos2018,Tadakuma2020,Triantafyllou2019}
 
 
