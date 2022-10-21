@@ -138,7 +138,7 @@ They describe safety guidance related to different spaces associated with a robo
 
 \subsection{Related Work}\label{relatedwork}
 In \cite{Cheng2021}, the authors propose a three-finger soft-rigid gripper actuated by a soft pneumatic actuator for low-damage gripping of fragile and soft objects. 
-By conducting a series of static and dynamic gripping tests that use different forces and fingertip displacements, the authors demonstrate the improved \emph{performance} and \emph{adaptability} of their gripper.  %linear-extension 
+By conducting a series of static and dynamic gripping tests that use different forces and fingertip displacements, the authors demonstrate enhancements to \emph{performance} and \emph{adaptability} of their gripper.  %linear-extension 
 
 A new compliant soft robotic gripper for grasping of objects and capping manipulations is proposed in \cite{Liu2021}. This is through the coordination of its three soft fingers and in hand-manipulation. 
 The core issue being addressed is \emph{adaptability} that achieves manipulative tolerance and dexterity for manipulating objects of various sizes, shapes, masses, and positions/orientations. 
@@ -280,6 +280,9 @@ An example is the grocery use case of Ocado, which is considered as the world's 
 %Trustworthiness of a soft gripper can be dependent on both functional and non-functional properties, such as predictability, reliability, adaptability and safety. 
 %These properties are especially significant for a soft gripper in situations such as ...
 In this section, we present a wide-ranging specification with several functional and non-functional properties for trustworthiness of a soft gripper, such as predictability, reliability, adaptability, safety, ethics and regulation (see Fig.\ref{SR-spec}). 
+The bounds to measure success of the gripper has been defined by typical bounds of 95\% for success and 5\% for failure. 
+Also, whenever a performance threshold is given, we aim to provide a reference from a published work or experiment. 
+% and 95% success
 %However, with respect to safety of a soft gripper, we consider safety from the viewpoint of the item being gripped...
 %In our study, we consider 
 %...
@@ -291,7 +294,8 @@ In this section, we present a wide-ranging specification with several functional
 \end{figure*}
 
 \paragraph{Predictability}\label{predictability}
-Predictability is ``a property of interaction concerning the degree of confidence with which a user can determine the effect subsequent task execution will have on the achievement of the goal"~\cite{Abowd1991}. A soft gripper needs to be predictable in its behaviour to build a degree of confidence for the user, for instance on the expected curving of its fingers when the pump is turned on. 
+Predictability is ``a property of interaction concerning the degree of confidence with which a user can determine the effect subsequent task execution will have on the achievement of the goal"~\cite{Abowd1991}. A soft gripper needs to be predictable in its behaviour, so it could build a degree of confidence and trust for end-user. 
+%in the user, for instance on the expected curving of its fingers when the pump is turned on. 
 %for instance changes to its curvature or finger inflation depending on other factors. %on the expected curving of its fingers when the pump is turned on.
 %when its fingers curve or straighten , such as fingers need to curve when the pump is turned on.
 %concerns the degree of confidence with which a user can determine the result of a future task execution will have on the achievement of a goal. 
@@ -301,8 +305,10 @@ Predictability is ``a property of interaction concerning the degree of confidenc
 	\item RQ1.1: The fingers of the gripper \emph{shall} curve when inflated (pump turned on).  
 	\item RQ1.2: The fingers of the gripper \emph{shall} straighten when deflated (pump turned off).  
 	\item RQ1.3: The curvature of a finger \emph{shall} be proportional to its internal pressure. 
-	\item RQ1.4: The fingers \emph{shall} be in a stable state -- pre-pressurized/inflated 10 times, prior to being used.  
-	\item RQ1.5: The fingers \emph{shall} be inflated with a pressure between 3-4 psi pressure range. \footnote{\cite{Partridge2022}}	\item RQ1.6: The fingers \emph{shall} be inflated with a flow rate between 2-3.2 L/min range. \footnote{\cite{DEWIN2022}} 
+	\item RQ1.4: the gripper \emph{shall} grasp, transport and place an item under same conditions with a $\ge$95\% pick-and-place repeatability.
+%	\item RQ1.4: The fingers \emph{shall} be in a stable state -- pre-pressurized/inflated 10 times, prior to being used.  
+	\item RQ1.5: The fingers \emph{shall} be inflated with a pressure between 3-4 psi pressure range \cite{Partridge2022}. 
+	\item RQ1.6: The fingers \emph{shall} be inflated with a flow rate between 2-3.2 L/min range \cite{DEWIN2022}.
 \end{itemize}
 
 %\begin{center}
@@ -324,7 +330,7 @@ Predictability is ``a property of interaction concerning the degree of confidenc
 %\end{center}
 
 \paragraph{Reliability}\label{reliability}
-\emph{Reliability} is defined as the ``ability of a system or component to perform its required functions under stated conditions for a specified period of time" \cite{ISO24765:2017}. A soft gripper needs to be reliable in its functionality by not dropping or damaging items during pick-and-place tasks, and should be tolerant to graceful degradation of performance.
+\emph{Reliability} is defined as the ``ability of a system or component to perform its required functions under stated conditions for a specified period of time" \cite{ISO24765:2017}. A soft gripper needs to be reliable by not dropping or damaging items during pick-and-place tasks, and should be tolerant to graceful degradation of performance.
 %\begin{center}
 %	\begin{tabular}{|p{7mm}|p{72mm}|}
 %		\hline
@@ -343,9 +349,9 @@ Predictability is ``a property of interaction concerning the degree of confidenc
 %\end{center}
 \begin{itemize}
 	\item RQ2.1: The gripper \emph{shall} hold the item being gripped without damaging it. 
-	\item RQ2.2: The gripper \emph{shall} hold the item being gripped without dropping it for at least 10 seconds 95\% of the time. \footnote{\cite{Sotiropoulos2018}, pg. 652}
-	\item RQ2.3: The gripper \emph{shall} successfully maintain grasp during translation of the gripped item for a maximum velocity and acceleration of 0.03 m/s and 150 mm/s$^2$. \footnote{\cite{Triantafyllou2019}, pg. 5; \cite{Cheng2021}, pg. 15}
-	\item RQ2.4: The gripper \emph{shall} successfully grasp when the rate of inflation is in the range of 2-3.2 L/min. \footnote{\cite{DEWIN2022}}
+	\item RQ2.2: The gripper \emph{shall} hold the item being gripped without dropping it for at least 10 seconds 95\% of the time (\cite{Sotiropoulos2018}, pg. 652).
+	\item RQ2.3: The gripper \emph{shall} successfully maintain grasp during translation of the gripped item for a maximum velocity and acceleration of 0.03 m/s and 150 mm/s$^2$ (\cite{Triantafyllou2019}, pg. 5; \cite{Cheng2021}, pg. 15).
+	\item RQ2.4: The gripper \emph{shall} successfully grasp when the rate of inflation is in the range of 2-3.2 L/min \cite{DEWIN2022}.
 	\item RQ2.5: The gripper \emph{shall} experience $\le$ 5\% increase in dropping of an item across 100 hours of operation. %(comment by SW: consider degradation rate instead?) 
 	\item RQ2.6: The gripper \emph{shall} experience $\le$ 5\% increase in damaging of an item across 100 hours of operation.  %(comment by SW: consider degradation rate instead?) 
 \end{itemize}
@@ -382,14 +388,14 @@ Predictability is ``a property of interaction concerning the degree of confidenc
 %\end{center}
 \paragraph{Safety}\label{safety}
 \emph{Safety} is defined as an ``expectation that a system does not, under defined conditions, lead to a state in which human life, health, property, or the environment is endangered" \cite{ISO24765:2017}. 
-However, in this study, we consider safety from the perspective of the item being gripped where physical damage should be avoided during the pick-and-place tasks. % and not from any physical harm to a human.
+In this study, we consider safety from the perspective of the item being gripped where physical damage should be avoided during pick-and-place tasks. % and not from any physical harm to a human.
 \begin{itemize}
 	\item RQ4.1: The item being gripped \emph{shall} be motionless before contact with the gripper. 
 	\item RQ4.2: The gripping system \emph{shall} not collide with the item being gripped. 
 	\item RQ4.3: The gripping system \emph{shall} only make contact with the item using the gripper.
-	\item RQ4.4: When grasping a hard–fragile item (e.g. light bulb, raw egg), the soft actuator \emph{shall} be inflated until the gripping force does not exceed 2N. \footnote{\cite{Cheng2021}, pg. 14}
-	\item RQ4.5: When grasping a soft–fragile item like cake or bread, the soft actuator \emph{shall} be inflated until the fingertip displacement does not exceed 3mm. \footnote{\cite{Cheng2021}, pg. 14}
-	\item RQ4.6: When grasping a soft–fragile item like strawberry or bayberry, the soft actuator \emph{shall} be inflated until the gripping force does not exceed 1N and the fingertip displacement does not exceed 1mm. \footnote{\cite{Cheng2021}, pg. 14}
+	\item RQ4.4: When grasping a hard–fragile item (e.g. light bulb, raw egg), the soft actuator \emph{shall} be inflated until the gripping force does not exceed 2N (\cite{Cheng2021}, pg. 14).
+	\item RQ4.5: When grasping a soft–fragile item like cake or bread, the soft actuator \emph{shall} be inflated until the fingertip displacement does not exceed 3mm (\cite{Cheng2021}, pg. 14).
+	\item RQ4.6: When grasping a soft–fragile item like strawberry or bayberry, the soft actuator \emph{shall} be inflated until the gripping force does not exceed 1N and the fingertip displacement does not exceed 1mm (\cite{Cheng2021}, pg. 14).
 \end{itemize}
 %\begin{center}
 %	\begin{tabular}{|p{7mm}|p{72mm}|}
@@ -499,19 +505,15 @@ PLACEHOLDER FOR PW\\
 PLACEHOLDER FOR PW\\
 PLACEHOLDER FOR PW\\
 
-
-
 \section{Verifiability of a Soft Gripper} \label{verifiability}
-The notion of \emph{verifiability} is considered key for improving trustworthiness of an AS, such as a soft robot \cite{Mousavi2022}. 
-A unified and holistic approach to verifiability will fundamentally change the approach to verification of ASs, which will lead to systems that are by their construction worthy of our trust. 
+%6.2 Verification and validation methodsVerification and validation can be satisfied by methods including but not limited to:—A visual inspection;—B practical tests;—C measurement;—D observation during operation;—E review of application-specific schematics, circuit diagrams and design material;—F review of safety-related application software and/or software documentation;—G review of task-based risk assessment;—H review of layout drawings and documents;—I review of specifications and information for use.See Table G.1.
+
+
+The notion of \emph{verifiability} is considered key for improving trustworthiness of an AS, such as a soft robotic system. 
+A unified and holistic approach to verifiability will fundamentally change the approach to verifying ASs, which will lead to systems that are by their construction worthy of our trust \cite{Mousavi2022}. 
 %Our vision is that such a unified andholistic approach to verifiability will fundamentallychange our approach to the verification ofautonomous systems and will lead to systems thatare by their construction are worthy of our trust.
 %To this end, one can seek to promote verifiability to a first-class system design objective \cite{Eder2021}. ...
 Verifiability can be achieved by considering verification early, such as during specification and system design \cite{Mousavi2022} where it can be promoted to a first-class system design objective \cite{Eder2021}. 
-
-According to Gerson \cite{Gerson1993}, system engineers need to design the system for \emph{verifiability}, as the ultimate purpose of specifications is verifying that the end product exhibits the intended properties. 
-This requires the intended properties to be \emph{demonstrable}, i.e. that knowledge of the end result needs to be attainable. 
-In our study, we have considered this early during specification, by taking into account how these properties can be verified later (see Table~\ref{Table:Verifiability}). 
-
 
 For a system to be {\em verifiable\/}, a person or a tool needs to be able to check its correctness~\cite{ISO24765:2017} with respect to its requirements and specification \cite{Abeywickrama2022}. 
 The main challenge is in specifying and designing the system in such a way that this process is made as easy and intuitive as possible.
@@ -523,48 +525,107 @@ For ASs in particular, specific challenges include
 (ii) handling flexibility, adaptation and learning; and 
 %
 (iii) managing the inherent complexity and heterogeneity of both the AS and the environment it operates in. 
-With respect to these i--iii challenges, our study has taken key steps towards addressing them. We propose a wide-ranging specification of requirements to demonstrate trustworthiness (Section III); and the specification includes requirements that adapts the soft gripper to objects of different sizes, shapes, masses and orientations/positions.
+%With respect to these i--iii challenges, our study has taken key steps towards addressing them. We propose a wide-ranging specification of requirements to demonstrate trustworthiness (Section~\ref{specification-gripper}); and the specification includes requirements that adapts the soft gripper to objects of different sizes, shapes, masses and orientations/positions.
 
-Most of the requirements in Section III are provided in a positive tone (avoiding negative requirements) along with any quantifiable performance measurements. 
-But, according to \cite{Gerson1993}, writing requirements for verifiability goes far beyond this where system engineers must design for verifiability. For example, these could be bounding the verification task, prioritizing effort, ensuring traceability and breaking down high-level requirements into verifiable portions. 
 
-Some requirements in the specification have been specified are high-level requirements, which needs to be extended into verifiable portions. 
-For instance, RQ1.1 can be broken by specifying the amount of curvature expected in mm or as a percentage of the diameter. 
-Similarly, RQ1.2 can mention how much degrees a finger needs to straighten when the pump is turned off. 
+Gerson~\cite{Gerson1993} identifies several techniques for verifiability: bounding the verification task, prioritizing effort, ensuring traceability, and breaking down high-level requirements into verifiable portions. 
+According to the author, formulating requirements for verifiability should go far beyond avoiding negative requirements and including numerical tolerances, but also aim to \emph{design for verifiability}. 
+This is because the ultimate purpose of specifications is verifying that the end product exhibits the intended properties. 
+This requires the intended properties to be \emph{demonstrable}, i.e. that knowledge of the end result needs to be attainable. 
+In our study, we have considered this early when formulating requirements, by confirming how these properties can be verified subsequently (see Table~\ref{Table:Verifiability}). 
 
-Requirement RQ 4.1 can be verified using a vision camera to inspect whether the item is moving or not. 
-RQ4.2 can be verified using a force torque sensor and 4.3 using both force torque sensor and vision camera. 
+For example, requirements 1.1, 1.2, 1.4, 2.1, 2.2 and 2.4 can be verified by observing the gripping system during operation. 
+Let us describe a unit or functional test that can be conducted to verify requirement RQ1.5. 
+A two-fingered soft pneumatic gripper can be fabricated as proposed in \cite{Partridge2022} using 30\% recycled material. 
+One can use black pigments to track the chambers and granules, and red pigments to track the curvature of the constraining layer. 
+Then the fingers can be actuated and their motion can be captured with a camera. Curvature with time can be determined by conducting image processing on the video. Also, internal pressure with time can be monitored.
+
+% Re robot paper
+%The fingers can be removed and replaced independently,facilitating in-factory replacement, recycling and reuse. Thefingers are pneumatically actuated to grip a range of objectsincluding a Rubik’s cube, a small rubber duck, a sponge balland a fresh egg.Two fingers were fabricated, one with pristine silicone andthe other with 30\% 1 to 2 mm granules, for comparison. Ablack pigment was used for the chambers and granules andred pigment for the constraining layers to allow curvatureof the constraining layer to be tracked. The fingers werethen actuated and their motion was captured with a camera.Image processing was then conducted on the video such thatcurvature with time could be determined. Internal pressurewith time was also monitored.
+%
+%For example, 
+%For the gripper testing (see Figure 7), the pressure responsein each finger is almost equal. However, the recycledfinger is only able to achieve 80% of the effective curvatureachieved by the pristine finger. As with the pneumatic actuator,this means that increased pressure will be required toachieve the same curvature as the pristine finger. This is stillsufficient for gripping purposes, but should be consideredwhen utilising recycled actuators in gripping systems.
+
+
+
+%Following this guidance, let us examine how our specification meets it.
+
+%IV. EXPERIMENTAL METHODS FOR BUCKLINGANALYSISA. Pressure and Volume To test the pressure response with volume for each configuration of buckling element (regular, fully constrained and offset), each pneu-net was loosely fitted to a black acrylicstand, such that they lay flat when unactuated but were notobstructed. Each configuration was then placed against ablack background and again attached to a pressure sensor.The pressure sensor was positioned as close to the base ofthe pneu-net as possible without interfering with the imagedata (roughly 2cm from the base) and connected to a syringe.The syringe was set at 30ml of volume and lay within a linearactuator that acted on the base to actuate the pneu-nets. Alaser distance sensor (LK-G152, Keyence) was set to measurethe displacement of the end of the syringe as it moved,thus allowing for an accurate volume measurement withtime. Both the pressure and laser distance sensor attachedto a DAQ (USB-6001 Multifunction I/O Device, NationalInstruments). Data was collected and processed in MatLab(Figure 5). The pressure / volume data allows comparisonsto be drawn between the pneu-nets and to examine how theaddition of buckling elements affects the pressure requiredto achieve actuation.
+%Fig. 5. Test set up for pressure and volume data acquisition. i) The syringeconnected to a linear actuator rail. ii) NI DAQ. iii) Pressure sensor. iv) Pneunetwith buckling element. v) LED to synchronise video data with DAQ data.vi) Linear actuator switch. vii) Laser distance sensor behind black screen.
+
+
+%According to Gerson~\cite{Gerson1993}, system engineers need to design the system for \emph{verifiability}, as the ultimate purpose of specifications is verifying that the end product exhibits the intended properties. 
+%This requires the intended properties to be \emph{demonstrable}, i.e. that knowledge of the end result needs to be attainable. 
+%In our study, we have considered this early during specification, by confirming how these properties can be verified later (see Table~\ref{Table:Verifiability}). For example, requirements 1.1, 1.2, 1.4, 2.1, 2.2 and 2.4 can be verified by observing the gripping system during operation. GIVE EXAMPLE...
+
+Following the guidance provided in the NASA system engineering handbook \cite{NASA2007} on how to write good requirements, all engineering requirements in Section~\ref{specification-gripper} have been stated positively (i.e. use of \emph{shall} statements as opposed to \emph{shall not} statements). 
+Also, most requirements there contain quantifiable tolerances. 
+Still, there are a few high-level requirements in the specification, which need to be refined into verifiable portions before any verification method can be applied. % this is the original one. 1.1 as it is it cannot be verified so we can use this as an example. how to make it verifiable? this is a refined version of this step. it is verifiable because we have now instantiated it.  
+For instance, requirements RQ1.1--1.3 have been formulated in a high-level because the amount of curvature and straightening of a finger can often be dependent on the application. 
+In order for these requirements to be verifiable, we can refine RQ1.1 as: the fingers of the gripper \textit{shall} curve within 2\% of summed difference between a curve of 10 cm radius when inflated. 
+Similarly, we can breakdown other high-level requirements of the specification such as RQ4.1--4.3. ...
+%Requirement RQ4.1 can be verified using a vision camera to inspect whether the item is moving or not. 
+%RQ4.2 can be verified using a force torque sensor, and 4.3 can be verified using both force torque sensor and vision camera. 
+
+On the other hand, requirements like RQ1.5 have identified a specific range of parameters, e.g. on internal pressure. % that is the right way of doing. 
+Similarly, in RQ4.4, we identify a maximum bound value of 2N for gripping force when gripping a hard-fragile item. 
+Therefore, our study provides two versions of the specification -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} and raw one for which we using examples show how to make it verifiable. 
+By doing this, we show what is the \emph{delta} between a high-level requirement and its verifiable version. 
+In this manner, our study not only formulates requirements for a pick-and-place application, but also goes a step further on providing design guidelines towards formulating verifiable requirements for the soft robotics community. % requirements verifiable.
+
+%And identify already that they need to be parameters and and that's the right way of doing this. So if we if we leave it like this as the raw set of requirements and it says. 
+%I see two versions I see the version of the paper where we consider verifiability from the start and we give them what we consider the verifiable version and we then argue why this is verifiable on some selected examples or we do the raw requirements as they are now and then in the verifiability section we say well.
+%For verifiability is very important to have these parameters and to to to to understand what they mean, what the Rangers are, etcetera.
+%And let's look at uh 1.1 this as it is in its raw state is not verifiable because and here is the verifiable version.
+%Umm. And that is verifiable because and so we could possibly with the 2nd way of doing this, make a much stronger point so that people see what the delta is between the raw and the what we consider verifiable.
+
+
+
+%Through this we provide guidelines to the soft robotics community on how to make requirements 
+%
+%
+%
+%There are some requirements in the specification where we consider verifiability from the start. 
+%We can argue why these set of requirements are verifiable. 
+%This instantiation of the generic requirement is very much needed to support its verifiability. 
+%
+%
+%
+%
+%the amount of curvature expected in mm or as a percentage of the diameter. 
+%Similarly, RQ1.2 can mention how much degrees a finger needs to straighten when the pump is turned off. 
+
 
 \begin{table}[!t]
 	\centering
-	\begin{tabular}{|p{35mm}|p{50mm}|}
+	\begin{tabular}{|p{32mm}|p{50mm}|}
 		\hline
-		\textbf{Requirements} & \textbf{Verification Technique} \\ 
+		\textbf{Requirements} & \textbf{Verification Method} \\ 
 		\hline
-		RQ1.1, 1.2, 2.1, 2.2, 2.4 & Visual Inspection \\
+		RQ1.1, 1.2, 1.4, 2.1, 2.2, 2.4 & Observation during operation\\%Visual Inspection \\
 		\hline
-		RQ1.3, 1.4, 1.5 & Unit Testing (Performance)  \\
+		RQ1.3, 1.5 & Practical tests: unit testing  \\
 		\hline
-		RQ2.3 & Edge-Case Testing \\
+		RQ2.3 & Practical tests: edge-case Testing \\
 		\hline
-		RQ2.5, 2.6 & Life-Cycle Testing \\
+		RQ2.5, 2.6 & Practical tests: life-cycle testing \\
 		\hline
-		RQ3.1, 3.2, 3.3 & Repeated Testing and Inspection \\
+		RQ3.1, 3.2, 3.3 & Practical tests: repeated testing and Observation \\
 		\hline
-		RQ4.1 & Vision Camera / Inspection  \\ 
+		RQ4.1 & Measurement: vision camera, observation  \\ 
 		\hline
-		RQ4.2 & Force Torque Sensor Test\\ 
+		RQ4.2 & Measurement: force torque sensor \\ 
 		\hline
-		RQ4.3 & Force Torque Sensor Test and Vision  \\ 
+		RQ4.3 & Measurement: force torque sensor and vision camera  \\ 
 		\hline
-		RQ4.4 & Functional Test\\ 
+		RQ4.4 & Practical tests: functional test\\ 
 		\hline
-		RQ4.5 & Displacement Sensor Test  \\ 
+		RQ4.5 & Measurement: displacement sensor   \\ 
 		\hline
-		RQ4.6 & Both Functional Test and Displacement Sensor Test  \\ 
+		RQ4.6 & Both Practical tests and Measurement (functional test and displacement sensor) \\ 
 		\hline
 	\end{tabular}
-	\label{Table:Verifiability}
+	\caption{\label{Table:Verifiability}Verification methods.}
 \end{table}
 %RQ4.1 & you can build this by vision camera to check whether it is moving or not, or just inspect. but a motion, camera will tell you exactly, so it'll be mounted one on somewhere, either on robot arm and effects or whatever. I'll be able to tell you, or just just outside it within the robot workspace, mounting it somewhere.. even inspection is Ok.  \\ 
 %RQ4.2 & More like, you know, tactile sensor, force torque sensor reading. Because this comes back to it not being damaged, the item right, so it has to be appropriate force being applied. So you can build that into your force torque sensor. This sensor is used -, the forced to see whether it's colliding with the item, right. \\ 
@@ -667,30 +728,30 @@ RQ4.2 can be verified using a force torque sensor and 4.3 using both force torqu
 
 %Meanwhile, \emph{verifiability} is considered key for improving trustworthiness, which can be realized by considering verification early as an integral part during specification, and system design \cite{Mousavi2022} where it can be promoted to a first-class system design objective \cite{Eder2021}. 
 %Verifiability will essentially lead to systems that are by their construction are worthy of our trust. 
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
-PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
+%PLACEHOLDER FOR VERIFIABILITY \\
 
 %In this subsection, we will discuss how we propose to make the requirements verifiable (raw requirements to verifiable requirements, and explain the delta)...
 
@@ -716,45 +777,47 @@ PLACEHOLDER FOR VERIFIABILITY \\
 %\cite{Cheng2021,Bhattacharya2019,Bianchi2018,Cai2021,Chen2018,Hong2022,Farrell2022,Hwang2020,Liu2021,Loh2014,Mohan2020,Negrello2020,Nishikawa2019,Pozzi2016,Shin2021,Sotiropoulos2018,Tadakuma2020,Triantafyllou2019}
 
 \section{Summary and Conclusions} \label{summary-conclusions}
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
-PLACEHOLDER FOR JR\\
+\noindent PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+
 
 \section*{Acknowledgments}
 The work presented in this paper has been supported by the UK Engineering and Physical Sciences Research Council (EPSRC) under the grant [EP/V026518/1].
