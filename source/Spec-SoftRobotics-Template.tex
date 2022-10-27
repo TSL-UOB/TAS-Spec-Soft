@@ -121,7 +121,7 @@ The operating procedure for the gripper is simple. Upon actuation of the gripper
 \subsubsection{Standards}
 Although no direct industry \emph{standards} have been defined for soft grippers so far, there are several standards in the area of rigid robotics that provide: (i) a set of terminology and definitions for robotic hands and grippers; and (ii) guidance related to safe spaces, speeds and forces a gripping system needs to function. 
 
-In 2000, \emph{ISO 14539:2000} standard targets manipulating of industrial robots, and provides terms to describe object handling and terms of functions, structures, and elements of grasp-type grippers \cite{ISO14539:2000}.
+\emph{ISO 14539:2000} standard targets manipulating of industrial robots, and provides terms to describe object handling and terms of functions, structures, and elements of grasp-type grippers \cite{ISO14539:2000}.
 Later, in 2018, a working group under the IEEE Technical Committee for Robotic Hands, Grasping and Manipulation proposed a standard \cite{Falco2018}, which provides a set of terminology and associated definitions for robotic hands. % (see pg. 3 for a definition for soft robotics). 
 %It covers terms relevant to defining performance for robotic hands. %\emph{Proposed Standard Terminology for Robotic Hands and Associated Performance Metrics} standard \cite{Falco2018} provides 
 %focuses on the functionalities of end effectors and concentrates on grasp type grippers \cite{ISO14539:2000}. It specifically targets manipulating of industrial robots and provides terms to describe object handling and terms of functions, structures, and elements of grasp-type grippers.
@@ -280,8 +280,8 @@ An example is the grocery use case of Ocado, which is considered as the world's 
 %Trustworthiness of a soft gripper can be dependent on both functional and non-functional properties, such as predictability, reliability, adaptability and safety. 
 %These properties are especially significant for a soft gripper in situations such as ...
 In this section, we present a wide-ranging specification with several functional and non-functional properties for trustworthiness of a soft gripper, such as predictability, reliability, adaptability, safety, ethics and regulation (see Fig.\ref{SR-spec}). 
-The bounds to measure success of the gripper has been defined by typical bounds of 95\% for success and 5\% for failure. 
-Also, whenever a performance threshold is given, we aim to provide a reference from a published work or experiment. 
+We define the bounds to measure the success of gripping an item using the conventional bounds of 95\% for success and 5\% for failure. 
+Also, in the following, whenever a performance threshold is given, we aim to provide a reference from a published work or experiment. 
 % and 95% success
 %However, with respect to safety of a soft gripper, we consider safety from the viewpoint of the item being gripped...
 %In our study, we consider 
@@ -358,9 +358,9 @@ Predictability is ``a property of interaction concerning the degree of confidenc
 \paragraph{Adaptability} \label{adaptability}
 \emph{Adaptability} is defined as the ``degree to which a product or system can effectively and efficiently be adapted for different or evolving hardware, software or other operational or usage environments" \cite{ISO24765:2017}. In a soft gripper, \emph{adaptability} is key for manipulating objects of various sizes, shapes, masses, and positions/orientations. 
 \begin{itemize}
-	\item RQ3.1: The gripper \emph{shall} hold items of different sizes up to a maximum of 95\% of the opening width of the two fingers without dropping it for at least 10 seconds 95\% of the time.
-	\item RQ3.2: The gripper \emph{shall} hold items of different shapes (e.g. sphere, cube, cone, pyramid, cylinder) without dropping it for at least 10 seconds 95\% of the time.
-	\item RQ3.3: The gripper \emph{shall} hold items, which can be of regular or irregular shape, without dropping it for at least 10 seconds 95\% of the time.
+	\item RQ3.1: The gripper \emph{shall} hold items of different sizes up to a maximum of 95\% of the opening width of the two fingers without dropping for at least 10 seconds 95\% of the time.
+	\item RQ3.2: The gripper \emph{shall} hold items of different shapes (e.g. sphere, cube, cone, pyramid, cylinder) without dropping for at least 10 seconds 95\% of the time.
+	\item RQ3.3: The gripper \emph{shall} hold items, which can be of regular or irregular shape, without dropping for at least 10 seconds 95\% of the time.
 	\item RQ3.4: The gripper \emph{shall} hold an item independent of its orientation without dropping it for at least 10 seconds 95\% of the time. 	  
 \end{itemize}
 %\begin{center}
@@ -540,17 +540,19 @@ For ASs in particular, specific challenges include
 %With respect to these i--iii challenges, our study has taken key steps towards addressing them. We propose a wide-ranging specification of requirements to demonstrate trustworthiness (Section~\ref{specification-gripper}); and the specification includes requirements that adapts the soft gripper to objects of different sizes, shapes, masses and orientations/positions.
 
 
-Gerson~\cite{Gerson1993} identifies several techniques for verifiability: bounding the verification task, prioritizing effort, ensuring traceability, and breaking down high-level requirements into verifiable portions. 
-According to the author, formulating requirements for verifiability should go far beyond avoiding negative requirements and including numerical tolerances, but also aim to \emph{design for verifiability}. 
+Gerson~\cite{Gerson1993} identifies several techniques for ensuring verifiability: bounding the verification task, prioritizing effort, ensuring traceability, and breaking down high-level requirements into verifiable portions. 
+According to Gerson, formulating requirements for verifiability should go far beyond avoiding negative requirements and including numerical tolerances, but also aim to \emph{design for verifiability}. 
 This is because the ultimate purpose of specifications is verifying that the end product exhibits the intended properties. 
-This requires the intended properties to be \emph{demonstrable}, i.e. that knowledge of the end result needs to be attainable. 
-In our study, we have considered this early when formulating requirements, by confirming how these properties can be verified subsequently (see Table~\ref{Table:Verifiability}). 
+This requires the intended properties to be \emph{demonstrable}, that is knowledge of the end result needs to be attainable. 
+In our study, we have considered this early when formulating requirements, by planning and confirming how these properties can be verified later (see Table~\ref{Table:Verifiability}). 
 
-For example, requirements 1.1, 1.2, 1.4, 2.1, 2.2 and 2.4 can be verified by observing the gripping system during operation. 
-Let us describe a unit or functional test that can be conducted to verify requirement RQ1.5. 
+For example, requirements 1.1, 1.2, 1.4, 2.1, 2.2 and 2.4 can be verified by \emph{observing} the gripping system during operation. 
+Observation is ``a technique that provides a direct way of viewing individuals in their environment performing their jobs or tasks and carrying out processes"~\cite{ISO24765:2017}.
+Let us describe a unit test that can be conducted to verify requirement RQ1.5. 
 A two-fingered soft pneumatic gripper can be fabricated as proposed in \cite{Partridge2022} using 30\% recycled material. 
 One can use black pigments to track the chambers and granules, and red pigments to track the curvature of the constraining layer. 
-Then the fingers can be actuated and their motion can be captured with a camera. Curvature with time can be determined by conducting image processing on the video. Also, internal pressure with time can be monitored.
+Then the fingers can be actuated and their motion can be captured with a camera. 
+Curvature with time can be determined by conducting image processing on the video. Also, internal pressure with time can be monitored.
 
 % Re robot paper
 %The fingers can be removed and replaced independently,facilitating in-factory replacement, recycling and reuse. Thefingers are pneumatically actuated to grip a range of objectsincluding a Rubik’s cube, a small rubber duck, a sponge balland a fresh egg.Two fingers were fabricated, one with pristine silicone andthe other with 30\% 1 to 2 mm granules, for comparison. Ablack pigment was used for the chambers and granules andred pigment for the constraining layers to allow curvatureof the constraining layer to be tracked. The fingers werethen actuated and their motion was captured with a camera.Image processing was then conducted on the video such thatcurvature with time could be determined. Internal pressurewith time was also monitored.
@@ -570,20 +572,21 @@ Then the fingers can be actuated and their motion can be captured with a camera.
 %This requires the intended properties to be \emph{demonstrable}, i.e. that knowledge of the end result needs to be attainable. 
 %In our study, we have considered this early during specification, by confirming how these properties can be verified later (see Table~\ref{Table:Verifiability}). For example, requirements 1.1, 1.2, 1.4, 2.1, 2.2 and 2.4 can be verified by observing the gripping system during operation. GIVE EXAMPLE...
 
-Following the guidance provided in the NASA system engineering handbook \cite{NASA2007} on how to write good requirements, all engineering requirements in Section~\ref{specification-gripper} have been stated positively (i.e. use of \emph{shall} statements as opposed to \emph{shall not} statements). 
-Also, most requirements there contain quantifiable tolerances. 
-Still, there are a few high-level requirements in the specification, which need to be refined into verifiable portions before any verification method can be applied. % this is the original one. 1.1 as it is it cannot be verified so we can use this as an example. how to make it verifiable? this is a refined version of this step. it is verifiable because we have now instantiated it.  
+Following the guidance provided in \cite{NASA2007} on how to write good requirements, engineering requirements in Section~\ref{specification-gripper} have been formulated positively (i.e. use of \emph{shall} statements as opposed to \emph{shall not} statements). 
+In addition, most requirements of the specification contain numeric tolerances. 
+Still, there are several high-level requirements in the specification, which need to be refined into verifiable portions before any verification method can be applied. % this is the original one. 1.1 as it is it cannot be verified so we can use this as an example. how to make it verifiable? this is a refined version of this step. it is verifiable because we have now instantiated it.  
 For instance, requirements RQ1.1--1.3 have been formulated in a high-level because the amount of curvature and straightening of a finger can often be dependent on the application. 
-In order for these requirements to be verifiable, we can refine RQ1.1 as: the fingers of the gripper \textit{shall} curve within 2\% of summed difference between a curve of 10 cm radius when inflated. 
+In order to be verifiable, we can refine RQ1.1 as: the fingers of the gripper \textit{shall} curve within 2\% of summed difference between a curve of 10 cm radius when inflated. 
 Similarly, we can breakdown other high-level requirements of the specification such as RQ4.1--4.3. ...
 %Requirement RQ4.1 can be verified using a vision camera to inspect whether the item is moving or not. 
 %RQ4.2 can be verified using a force torque sensor, and 4.3 can be verified using both force torque sensor and vision camera. 
+%summed difference score is the sum of the differences between the stress and rest scores 
 
-On the other hand, requirements like RQ1.5 have identified a specific range of parameters, e.g. on internal pressure. % that is the right way of doing. 
+On the other hand, requirements like RQ1.5 have identified a specific range of tolerance values (e.g. pressure range). % that is the right way of doing. 
 Similarly, in RQ4.4, we identify a maximum bound value of 2N for gripping force when gripping a hard-fragile item. 
-Therefore, our study provides two versions of the specification -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} and raw one for which we using examples show how to make it verifiable. 
-By doing this, we show what is the \emph{delta} between a high-level requirement and its verifiable version. 
-In this manner, our study not only formulates requirements for a pick-and-place application, but also goes a step further on providing design guidelines towards formulating verifiable requirements for the soft robotics community. % requirements verifiable.
+Therefore, our study provides two versions of the specification -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} one, for which we using examples show how to make it verifiable. 
+By doing this, we show what is the difference or delta between a high-level requirement and its verifiable version. 
+In this manner, our study not only provides a wide-ranging specification for a pick-and-place application, but it also goes a step further by providing design guidelines towards the formulation of verifiable requirements for the soft robotics community. % requirements verifiable.
 
 %And identify already that they need to be parameters and and that's the right way of doing this. So if we if we leave it like this as the raw set of requirements and it says. 
 %I see two versions I see the version of the paper where we consider verifiability from the start and we give them what we consider the verifiable version and we then argue why this is verifiable on some selected examples or we do the raw requirements as they are now and then in the verifiability section we say well.
