@@ -547,7 +547,7 @@ This is because the ultimate purpose of specifications is verifying that the end
 This requires the intended properties to be \emph{demonstrable}, that is knowledge of the end result needs to be attainable. 
 In our study, we have considered this early when formulating requirements, by planning and confirming how these properties can be verified later (see Table~\ref{Table:Verifiability}). 
 
-For example, requirements 1.1, 1.2, 1.4, 2.1, 2.2 and 2.4 can be verified by \emph{observing} the gripping system during operation. 
+For example, requirements 1.1, 1.2, 1.4, 2.1, 2.2, and 2.4 can be verified by \emph{observing} the gripping system during operation. 
 Observation is ``a technique that provides a direct way of viewing individuals in their environment performing their jobs or tasks and carrying out processes"~\cite{ISO24765:2017}.
 Let us describe a unit test that can be conducted to verify requirement RQ1.5. 
 A two-fingered soft pneumatic gripper can be fabricated as proposed in \cite{Partridge2022} using 30\% recycled material. 
@@ -578,16 +578,23 @@ In addition, most requirements of the specification contain numeric tolerances.
 Still, there are several high-level requirements in the specification, which need to be refined into verifiable portions before any verification method can be applied. % this is the original one. 1.1 as it is it cannot be verified so we can use this as an example. how to make it verifiable? this is a refined version of this step. it is verifiable because we have now instantiated it.  
 For instance, requirements RQ1.1--1.3 have been formulated in a high-level because the amount of curvature and straightening of a finger can often be dependent on the application. 
 In order to be verifiable, we can refine RQ1.1 as: the fingers of the gripper \textit{shall} curve within 2\% of summed difference between a curve of 10 cm radius when inflated. 
-Similarly, we can breakdown other high-level requirements of the specification such as RQ4.1--4.3. ...
+Similarly, we can refine requirement RQ4.2 as: the position of the gripping system \emph{shall} not be equal to the position of the item being grasped. 
+This can be verified by monitoring the distance between each of the joints of the gripping system to ensure there is no collision between the body of the gripping system and the item. 
+Meanwhile, with respect to RQ4.1, we don't need to impose an initial velocity on the food item in the test bed, so this requirement can be met by design (i.e. no need to formally verify or monitor).
+% to R1.2, we didn’t impose an initial velocity on the TGT ineither the simulation or the testbed so this requirement wasmet bydesign.
+%Throughout the motion, the distance between each ofthe SV joints and the grasping point is monitored, to ensurethat there is no collision between the SV body and the TGT(R2.1 and R.2).
+
+
+%Similarly, we can breakdown other high-level requirements of the specification such as RQ4.1--4.3. ...
 %Requirement RQ4.1 can be verified using a vision camera to inspect whether the item is moving or not. 
 %RQ4.2 can be verified using a force torque sensor, and 4.3 can be verified using both force torque sensor and vision camera. 
 %summed difference score is the sum of the differences between the stress and rest scores 
 
 On the other hand, requirements like RQ1.5 have identified a specific range of tolerance values (e.g. pressure range). % that is the right way of doing. 
 Similarly, in RQ4.4, we identify a maximum bound value of 2N for gripping force when gripping a hard-fragile item. 
-Therefore, our study provides two versions of the specification -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} one, for which we using examples show how to make it verifiable. 
+Thus, as seen here, our study provides two versions of the specification -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} one, for which we using examples show how to make it verifiable. 
 By doing this, we show what is the difference or delta between a high-level requirement and its verifiable version. 
-In this manner, our study not only provides a wide-ranging specification for a pick-and-place application, but it also goes a step further by providing design guidelines towards the formulation of verifiable requirements for the soft robotics community. % requirements verifiable.
+In this manner, our study not only provides a wide-ranging specification for a pick-and-place application, but it also goes a step further by providing design guidelines on formulating verifiable requirements for the soft robotics community. % requirements verifiable.
 
 %And identify already that they need to be parameters and and that's the right way of doing this. So if we if we leave it like this as the raw set of requirements and it says. 
 %I see two versions I see the version of the paper where we consider verifiability from the start and we give them what we consider the verifiable version and we then argue why this is verifiable on some selected examples or we do the raw requirements as they are now and then in the verifiability section we say well.
