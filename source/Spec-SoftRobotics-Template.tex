@@ -574,8 +574,14 @@ Curvature with time can be determined by conducting image processing on the vide
 %In our study, we have considered this early during specification, by confirming how these properties can be verified later (see Table~\ref{Table:Verifiability}). For example, requirements 1.1, 1.2, 1.4, 2.1, 2.2 and 2.4 can be verified by observing the gripping system during operation. GIVE EXAMPLE...
 
 Following the guidance provided in \cite{NASA2007} on how to write good requirements, engineering requirements in Section~\ref{specification-gripper} have been formulated positively (i.e. use of \emph{shall} statements as opposed to \emph{shall not} statements). 
-In addition, most requirements of the specification contain numeric tolerances. 
-Still, there are several high-level requirements in the specification, which need to be refined into verifiable portions before any verification method can be applied. % this is the original one. 1.1 as it is it cannot be verified so we can use this as an example. how to make it verifiable? this is a refined version of this step. it is verifiable because we have now instantiated it.  
+On one hand, most requirements of the specification contain numeric tolerances. 
+For example, requirements like RQ1.5 have identified a specific range of tolerance values (e.g. pressure range). % that is the right way of doing. 
+Similarly, in RQ4.4, we identify a maximum bound value of 2N for gripping force when gripping a hard-fragile item. 
+
+On the other hand, in the specification, there are several high-level requirements in the specification, which need to be refined into verifiable portions before any verification method can be applied. 
+%Following the guidance provided in \cite{NASA2007} on how to write good requirements, engineering requirements in Section~\ref{specification-gripper} have been formulated positively (i.e. use of \emph{shall} statements as opposed to \emph{shall not} statements). 
+%In addition, most requirements of the specification contain numeric tolerances. 
+%Still, there are several high-level requirements in the specification, which need to be refined into verifiable portions before any verification method can be applied. % this is the original one. 1.1 as it is it cannot be verified so we can use this as an example. how to make it verifiable? this is a refined version of this step. it is verifiable because we have now instantiated it.  
 For instance, requirements RQ1.1--1.3 have been formulated in a high-level because the amount of curvature and straightening of a finger can often be dependent on the application. 
 In order to be verifiable, we can refine RQ1.1 as: the fingers of the gripper \textit{shall} curve within 2\% of summed difference between a curve of 10 cm radius when inflated. 
 Similarly, we can refine requirement RQ4.2 as: the position of the gripping system \emph{shall} not be equal to the position of the item being grasped. 
@@ -589,10 +595,12 @@ Meanwhile, with respect to RQ4.1, we don't need to impose an initial velocity on
 %Requirement RQ4.1 can be verified using a vision camera to inspect whether the item is moving or not. 
 %RQ4.2 can be verified using a force torque sensor, and 4.3 can be verified using both force torque sensor and vision camera. 
 %summed difference score is the sum of the differences between the stress and rest scores 
+%
+%On the other hand, most requirements of the specification contain numeric tolerances. 
+%For example, requirements like RQ1.5 have identified a specific range of tolerance values (e.g. pressure range). % that is the right way of doing. 
+%Similarly, in RQ4.4, we identify a maximum bound value of 2N for gripping force when gripping a hard-fragile item. 
 
-On the other hand, requirements like RQ1.5 have identified a specific range of tolerance values (e.g. pressure range). % that is the right way of doing. 
-Similarly, in RQ4.4, we identify a maximum bound value of 2N for gripping force when gripping a hard-fragile item. 
-Thus, as seen here, our study provides two versions of the specification -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} one, for which we using examples show how to make it verifiable. 
+Thus, as seen here, our study provides two versions of the specification -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} one, for which by using examples we demonstrate how to make it verifiable. 
 By doing this, we show what is the difference or delta between a high-level requirement and its verifiable version. 
 In this manner, our study not only provides a wide-ranging specification for a pick-and-place application, but it also goes a step further by providing design guidelines on formulating verifiable requirements for the soft robotics community. % requirements verifiable.
 
