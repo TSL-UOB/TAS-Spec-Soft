@@ -439,7 +439,7 @@ Finally, increased warehouse automation through soft gripper deployment may impr
 \\
 
 
-\paragraph{Regulation}\label{regulation}
+\paragraph{Regulations}\label{regulation}
 %\textbf{Responsible author: Pete Winter}\\
 %\textbf{(Maximum 350 words)}\\
 
@@ -568,19 +568,20 @@ Curvature with time can be determined by conducting image processing on the vide
 %In our study, we have considered this early during specification, by confirming how these properties can be verified later (see Table~\ref{Table:Verifiability}). For example, requirements 1.1, 1.2, 1.4, 2.1, 2.2 and 2.4 can be verified by observing the gripping system during operation. GIVE EXAMPLE...
 
 Following the guidance provided in \cite{NASA2007} on how to write good requirements, engineering requirements in Section~\ref{specification-gripper} have been formulated positively (i.e. use of \emph{shall} statements as opposed to \emph{shall not} statements). 
-On one hand, most requirements of the specification contain numeric tolerances. 
-For example, requirements like RQ1.5 have identified a specific range of tolerance values (e.g. pressure range). % that is the right way of doing. 
+On the one hand, most requirements of the specification contain numeric tolerances. 
+For example, requirements like RQ1.5 identify a specific pressure range. 
 Similarly, in RQ4.4, we identify a maximum bound value of 2N for gripping force when gripping a hard-fragile item. 
-
-On the other hand, there are several high-level requirements in the specification, which need to be refined into verifiable portions before any verification method can be applied. 
+ % of tolerance values (e.g. pressure range). % that is the right way of doing. 
+%Similarly, in RQ4.4, we identify a maximum bound value of 2N for gripping force when gripping a hard-fragile item. 
+On the other hand, there are several high-level requirements, which need to be refined into verifiable portions before any verification method can be applied. 
 %Following the guidance provided in \cite{NASA2007} on how to write good requirements, engineering requirements in Section~\ref{specification-gripper} have been formulated positively (i.e. use of \emph{shall} statements as opposed to \emph{shall not} statements). 
 %In addition, most requirements of the specification contain numeric tolerances. 
 %Still, there are several high-level requirements in the specification, which need to be refined into verifiable portions before any verification method can be applied. % this is the original one. 1.1 as it is it cannot be verified so we can use this as an example. how to make it verifiable? this is a refined version of this step. it is verifiable because we have now instantiated it.  
 For instance, requirements RQ1.1--1.3 have been formulated in a high-level because the amount of curvature and straightening of a finger can often be dependent on the application. 
 In order to be verifiable, we can refine RQ1.1 as: the fingers of the gripper \textit{shall} curve within 2\% of summed difference between a curve of 10 cm radius when inflated. 
 Similarly, we can refine requirement RQ4.2 as: the position of the gripping system \emph{shall} not be equal to the position of the item being grasped. 
-This can be verified by monitoring the distance between each of the joints of the gripping system to ensure there is no collision between the body of the gripping system and the item. 
-Meanwhile, with respect to RQ4.1, we don't need to impose an initial velocity on the food item in the test bed, so this requirement can be met by design (i.e. no need to formally verify or monitor).
+This can be verified by monitoring the distance between each of the joints of the gripping system to ensure that there is no collision between the body of the gripping system and the item. 
+Meanwhile, with respect to RQ4.1, one does not need to impose an initial velocity on the food item in the test bed, so this requirement can be met by design (i.e. no need to formally verify or monitor).
 % to R1.2, we didn’t impose an initial velocity on the TGT ineither the simulation or the testbed so this requirement wasmet bydesign.
 %Throughout the motion, the distance between each ofthe SV joints and the grasping point is monitored, to ensurethat there is no collision between the SV body and the TGT(R2.1 and R.2).
 
@@ -594,8 +595,8 @@ Meanwhile, with respect to RQ4.1, we don't need to impose an initial velocity on
 %For example, requirements like RQ1.5 have identified a specific range of tolerance values (e.g. pressure range). % that is the right way of doing. 
 %Similarly, in RQ4.4, we identify a maximum bound value of 2N for gripping force when gripping a hard-fragile item. 
 
-Thus, as seen here, our study provides two versions of the specification -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} one, for which by using examples we demonstrate how to make it verifiable. 
-By doing this, we show what is the difference or delta between a high-level requirement and its verifiable version. 
+Thus, our study provides two versions of the specification -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} one, for which by using examples we demonstrate how to make it verifiable. 
+By doing this, we show what is the difference between a high-level requirement and its verifiable version. 
 In this manner, our study not only provides a wide-ranging specification for a pick-and-place application, but it also goes a step further by providing design guidelines on formulating verifiable requirements for the soft robotics community. % requirements verifiable.
 
 %And identify already that they need to be parameters and and that's the right way of doing this. So if we if we leave it like this as the raw set of requirements and it says. 
@@ -635,7 +636,7 @@ In this manner, our study not only provides a wide-ranging specification for a p
 		\hline
 		RQ2.5, 2.6 & Practical tests: life-cycle testing \\
 		\hline
-		RQ3.1, 3.2, 3.3 & Practical tests: repeated testing and Observation \\
+		RQ3.1, 3.2, 3.3 & Practical tests: repeated testing, and Observation \\
 		\hline
 		RQ4.1 & Measurement: vision camera, observation  \\ 
 		\hline
@@ -647,7 +648,7 @@ In this manner, our study not only provides a wide-ranging specification for a p
 		\hline
 		RQ4.5 & Measurement: displacement sensor   \\ 
 		\hline
-		RQ4.6 & Both Practical tests and Measurement (functional test and displacement sensor) \\ 
+		RQ4.6 & Both Practical tests (functional test), and Measurement (displacement sensor) \\ 
 		\hline
 	\end{tabular}
 	\caption{\label{Table:Verifiability} Soft-gripper requirements and verification methods.}
@@ -802,46 +803,160 @@ In this manner, our study not only provides a wide-ranging specification for a p
 %\cite{Cheng2021,Bhattacharya2019,Bianchi2018,Cai2021,Chen2018,Hong2022,Farrell2022,Hwang2020,Liu2021,Loh2014,Mohan2020,Negrello2020,Nishikawa2019,Pozzi2016,Shin2021,Sotiropoulos2018,Tadakuma2020,Triantafyllou2019}
 
 \section{Summary and Conclusions} \label{summary-conclusions}
-\noindent PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
-PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+With the advancement of soft robotics as an emerging technology, flexible devices are created by engineers to be used in different applications like grocery picking, space exploration, surgery, and prosthetics. 
+Within soft robotics, soft gripping is considered to be the most mature area. 
+Therefore, one needs to build soft grippers worthy of trust regarding safety, predictability, adaptability, and other non-functional properties. 
+A key limitation of the state-of-the-art is that they only cover a very limited range of properties, such as performance and adaptability.  
+Furthermore, most existing works only describe some parameters of the end-effector. 
+Therefore, our study, which is explored using a pick-and-place tasks of grocery items, proposed an extensive specification for a soft gripper covering several non-functional properties of predictability, reliability, adaptability, safety, ethics, and regulations. 
+In addition, our study promoted the verifiability of a soft gripper as a first-class design objective. 
+We adopted several techniques to ensure verifiability and identified several design guidelines on formulating verifiability requirements. 
+
+%Thus, our study provides two versions of the specification -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} one, for which by using examples we demonstrate how to make it verifiable. 
+%By doing this, we show what is the difference or delta between a high-level requirement and its verifiable version. 
+%In this manner, our study not only provides a wide-ranging specification for a pick-and-place application, but it also goes a step further by providing design guidelines on formulating verifiable requirements for the soft robotics community.
+%%Requirements for predictability of a soft gripper is important, so one could build a degree of confidence for the end-user. 
+%%Meanwhile, reliability is needed to ensure an item is not dropped or damaged, and it is tolerant to degradation of performance. 
+%%Adaptability is key for manipulating objects of different sizes, shapes, masses, and positions/orientations. 
+%%Requirements on safety are formulated to avoid physical damage to the item being gripped. 
+%%In addition to the engineering requirements, our study formulated a set of requirements on ethics and regulations.  
+%
+%
+%Thus, our study provides two versions of the specification -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} one, for which by using examples we demonstrate how to make it verifiable. 
+%By doing this, we show what is the difference or delta between a high-level requirement and its verifiable version. 
+%In this manner, our study not only provides a wide-ranging specification for a pick-and-place application, but it also goes a step further by providing design guidelines on formulating verifiable requirements for the soft robotics community.
+
+
+We conclude that specifying for trustworthiness for a soft gripper requires advances on the engineering side, informed by new insights from social sciences and humanities research. Thus, tackling this specification challenge necessitates tight collaboration of engineers, soft roboticists and computer scientists with experts from psychology, sociology, law, politics and economics, as well as ethics and philosophy. Most importantly, continuous engagement with regulators and the general public will be key to trustworthy soft robots.
+
+
+%In this paper we have first examined ASs domains of different levels of maturity and then identified their specification challenges and related research directions. 
+%
+%Thus, we need to build  ensuring their trustworthiness is essential. 
+%
+%we need to build systems worthy of trust regarding safety, security and other non-functional properties.
+%
+%This study has proposed a wide-ranging specification 
+%\begin{abstract}
+%	Soft robotics is an emerging technology in which engineers create flexible devices for use in a variety of applications. %, such as surgery, prosthetics, space exploration, and grocery picking. 
+%	Soft gripping is considered to be the most mature area in soft robotics. 
+%	In order to advance the wide adoption of soft robots, ensuring their trustworthiness is essential.  % to advance the wide adoption of soft robots. 
+%	There are a number of techniques for demonstrating the trustworthiness and common to all these techniques is the need to formulate \emph{specifications}, which so far has received very little attention by the soft robotics community.
+%	The main contribution of this article is an extensive specification for the trustworthiness of a soft gripper that covers both functional and non-functional requirements, such as reliability, safety, adaptability, predictability, ethics, and regulations.  
+%	We also highlight the need to promote \emph{verifiability} as a first-class objective in the design of a soft gripper. 
+%	We explore our study using a case study of pick-and-place tasks of grocery items involving a recycled soft gripper.
+%\end{abstract}
+%
+%\begin{IEEEkeywords}
+%	Specification, trust, soft gripper, verifiability, evolving functionality, autonomous systems, soft robotics.
+%\end{IEEEkeywords}
+%
+%\section{Introduction}\label{introduction}
+%Soft robotics is an emerging technology in which engineers create flexible devices for use in a variety of applications, such as surgery, prosthetics, space exploration, and grocery picking. 
+%
+%
+%
+%
+%Soft gripping is considered to be the most mature area in soft robotics. 
+%In order to advance the wide adoption of soft robots, ensuring their trustworthiness is essential. 
+%\emph{Trust} may vary, as it can be gained and lost over time, and different research disciplines define trust in different ways. 
+%Autonomous systems (ASs) (e.g. soft robotic systems) are considered \emph{trustworthy} when the design, engineering, and operation of these systems generate positive outcomes and mitigate outcomes which can be harmful~\cite{Naiseh2022}.
+%Trustworthiness can be dependent on many factors such as: (i) explainability, accountability, and understandability to different users; (ii) robustness in dynamic and uncertain environments; (iii) assurance of their design and operation through verification and validation (V\&V) activities; (iv) confidence in their ability to adapt their functionality as required; (v) security against attacks on the systems, users, and deployed environment; (vi) governance and regulation of their design and operation; and (vii) consideration of ethics and human values in their deployment and use~\cite{Naiseh2022}. 
+%
+%There are various techniques for demonstrating the trustworthiness of ASs, such as formal verification at design-time, runtime verification or monitoring, synthesis and test-based methods \cite{Abeywickrama2022}. 
+%However, common to all these techniques is the need to formulate \emph{specifications}. 	
+%According to the ISO standard for systems and software engineering vocabulary~\cite{ISO24765:2017}, a \emph{specification} is a detailed formulation that provides a definitive description of a system for the purpose of developing or validating the system. 
+%However, the soft robotics community has so far given very little attention to formulating the specifications of soft robotic grippers where most existing works only describe some parameters of the end-effectors (e.g. \cite{Hong2022,Bhattacharya2019,Tadakuma2020,Loh2014,Nishikawa2019,Mohan2020}).  
+%
+%Meanwhile, \emph{verifiability} is considered key for improving trustworthiness, which can be realised by considering verification early as an integral part during specification, and system design \cite{Mousavi2022} where it can be promoted to a first-class system design objective \cite{Eder2021}. 
+%Verifiability will essentially lead to systems that by their construction are worthy of our trust. 
+%%, and to this end, it can be promoted to a first-class system design objective \cite{Eder2021}. 
+%The main contributions of this paper are as follows:
+%\begin{itemize}
+%	\item We provide an extensive specification to ensure the trustworthiness of a soft robotic gripper \cite{Partridge2022} with both functional and non-functional requirements, such as reliability, safety, adaptability, predictability, ethics, and regulations.
+%	\item We highlight the importance of promoting \emph{verifiability} as a first-class objective in the design of a soft robotic gripper. 
+%\end{itemize}
+%We explore our study using a case study of pick-and-place tasks of grocery items involving a recycled soft gripper \cite{Partridge2022}. 
+%
+%
+%
+%As ASs are becoming part of our daily lives and interacting more closely with humans, we need to build systems worthy of trust regarding safety, security and other non-functional properties. In this paper we have first examined ASs domains of different levels of maturity and then identified their specification challenges and related research directions. 
+%One of these challenges is the formalisation of knowledge easily grasped by humans so that it becomes interpretable by machines. Prominent examples include the specification of driving regulations for AVs, and the specification of human knowledge expertise in the context of AI-based medical diagnostics. 
+%%
+%How to specify and model human behaviour, intent and mental state is a further challenge that is common to all domains where humans interact closely with ASs, such as in human-robot collaborative environments as found in smart manufacturing. 
+%%
+%%-------
+%Alternative approaches involve the specification of norms to characterise the desired behaviour of ASs, which regulate what the system should do or should not do. An emerging direction of research is the design of monitors to observe the system and check compliance with norms~\cite{Criado:2018}. 
+%%-----
+%%
+%The example of swarm robotics raises the need and challenge to specify behaviour that emerges at the system level and relies on certain actions of the entities that form the system with each other and their environment. 
+%
+%Beyond the technical aspects, across the specific ASs domains, are research challenges related to governance and regulation for trustworthiness, requiring a holistic and human centred approach to specification focused on responsibility and accountability, and enabling explainability from the outset. 
+%%
+%Fundamental to specifying for trustworthiness is a sound understanding of human behaviour and expectations, as well as the social and ethical norms applicable when humans directly interact with ASs. 
+%% 
+%As for future work, an interesting extension of this paper would be to produce a classification of properties to be specified for trustworthiness under the different intellectual challenges discussed (e.g. socio-technical properties of explainability are purpose, audience, content, timing and delivery mechanism of explanations). 
+%
+%We conclude that specifying for trustworthiness requires advances on the technical and engineering side, informed by new insights from social sciences and humanities research. Thus, tackling this specification challenge necessitates tight collaboration of engineers, roboticists and computer scientists with experts from psychology, sociology, law, politics and economics, as well as ethics and philosophy. Most importantly, continuous engagement with regulators and the general public will be key to trustworthy ASs.
+%As ASs are becoming part of our daily lives and interacting more closely with humans, we need to build systems worthy of trust regarding safety, security and other non-functional properties. In this paper we have first examined ASs domains of different levels of maturity and then identified their specification challenges and related research directions. 
+%One of these challenges is the formalisation of knowledge easily grasped by humans so that it becomes interpretable by machines. Prominent examples include the specification of driving regulations for AVs, and the specification of human knowledge expertise in the context of AI-based medical diagnostics. 
+%%
+%How to specify and model human behaviour, intent and mental state is a further challenge that is common to all domains where humans interact closely with ASs, such as in human-robot collaborative environments as found in smart manufacturing. 
+%%
+%%-------
+%Alternative approaches involve the specification of norms to characterise the desired behaviour of ASs, which regulate what the system should do or should not do. An emerging direction of research is the design of monitors to observe the system and check compliance with norms~\cite{Criado:2018}. 
+%%-----
+%%
+%The example of swarm robotics raises the need and challenge to specify behaviour that emerges at the system level and relies on certain actions of the entities that form the system with each other and their environment. 
+%
+%Beyond the technical aspects, across the specific ASs domains, are research challenges related to governance and regulation for trustworthiness, requiring a holistic and human centred approach to specification focused on responsibility and accountability, and enabling explainability from the outset. 
+%%
+%Fundamental to specifying for trustworthiness is a sound understanding of human behaviour and expectations, as well as the social and ethical norms applicable when humans directly interact with ASs. 
+%% 
+%As for future work, an interesting extension of this paper would be to produce a classification of properties to be specified for trustworthiness under the different intellectual challenges discussed (e.g. socio-technical properties of explainability are purpose, audience, content, timing and delivery mechanism of explanations). 
+%
+%We conclude that specifying for trustworthiness requires advances on the technical and engineering side, informed by new insights from social sciences and humanities research. Thus, tackling this specification challenge necessitates tight collaboration of engineers, roboticists and computer scientists with experts from psychology, sociology, law, politics and economics, as well as ethics and philosophy. Most importantly, continuous engagement with regulators and the general public will be key to trustworthy ASs.
+
+%\noindent PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
+%PLACEHOLDER FOR SUMMARY AND CONCLUSIONS\\
 
 
 \section*{Acknowledgments}
