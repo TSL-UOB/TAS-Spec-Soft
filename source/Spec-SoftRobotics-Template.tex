@@ -332,9 +332,15 @@ Also, in the following, whenever a performance threshold is given, where possibl
 %However, with respect to safety of a soft gripper, we consider safety from the viewpoint of the item being gripped...
 %In our study, we consider 
 %...
+%\begin{figure*}
+%	\centering
+%	\includegraphics[width=0.85\textwidth]{figures/soft-t.png}
+%	\caption{Soft gripper: Specifying for trustworthiness. Core properties (Colored) are evaluated through a range of practical evaluations (boxes). }
+%	\label{SR-spec}
+%\end{figure*}
 \begin{figure*}
 	\centering
-	\includegraphics[width=0.85\textwidth]{figures/soft-t.png}
+	\includegraphics[width=0.85\textwidth]{figures/soft-t-v2.png}
 	\caption{Soft gripper: Specifying for trustworthiness. Core properties (Colored) are evaluated through a range of practical evaluations (boxes). }
 	\label{SR-spec}
 \end{figure*}
@@ -407,7 +413,7 @@ Predictability is ``a property of interaction concerning the degree of confidenc
 \begin{itemize}
 	\item RQ3.1: The gripper \emph{shall} hold items of different sizes up to a maximum of 95\% of the opening width of the two fingers without dropping them for at least 10 seconds 95\% of the time.
 	\item RQ3.2: The gripper \emph{shall} hold items of different shapes (e.g. sphere, cube, cone, pyramid, cylinder) without dropping them for at least 10 seconds 95\% of the time.
-	\item RQ3.3: The gripper \emph{shall} hold items, which can be of regular or irregular shape, without dropping them for at least 10 seconds 95\% of the time.
+	\item RQ3.3: The gripper \emph{shall} hold items, which can be of regular or irregular shape (e.g. soft-fragile items like strawberry), without dropping them for at least 10 seconds 95\% of the time.
 	\item RQ3.4: The gripper \emph{shall} hold an item independent of its orientation without dropping it for at least 10 seconds 95\% of the time. 	  
 \end{itemize}
 %\begin{center}
@@ -437,7 +443,7 @@ Predictability is ``a property of interaction concerning the degree of confidenc
 \emph{Safety} is defined as an ``expectation that a system does not, under defined conditions, lead to a state in which human life, health, property, or the environment is endangered" \cite{ISO24765:2017}. 
 In this study, we consider safety from the perspective of the item being gripped where physical damage should be avoided during pick-and-place tasks. % and not from any physical harm to a human.
 \begin{itemize}
-	\item RQ4.1: The item being gripped \emph{shall} be motionless before contact with the gripper. 
+	\item RQ4.1: The item being gripped \emph{shall} be motionless (to minimise harm) before contact with the gripper. 
 	\item RQ4.2: The gripping system \emph{shall} not collide with the item being gripped. 
 	\item RQ4.3: The gripping system \emph{shall} only make contact with the item using the gripper.
 	\item RQ4.4: When grasping a hard–fragile item (e.g. light bulb, egg), the soft actuator \emph{shall} be inflated until the gripping force does not exceed 2 N (\cite{Cheng2021}).
@@ -482,8 +488,7 @@ Simultaneously, the biomimetic features of soft grippers risk exploiting humans�
 
 % next paragraph could be removed if space is needed - it is not very related specifically to gripper specification, but is a general statement on automation.
 %Finally, increased warehouse automation through soft gripper deployment may improve efficiency in grocery settings, thus leading to decreased costs to the advantage of consumers; it could also relieve workers from routine or physically demanding tasks. However, in the transition to increased automation, current human pickers may be treated unfairly, due to decreased employment opportunities or dramatic changes in the skills required of employees. Company policies should be implemented to retrain or upskill current workers \cite{georgieff2021happened}.
-\\
-
+%\\
 \paragraph{Regulations}\label{regulation}
 %\textbf{Responsible author: Pete Winter}\\
 %\textbf{(Maximum 350 words)}\\
@@ -1006,7 +1011,7 @@ We conclude that specifying for trustworthiness for a soft gripper requires adva
 
 
 \section*{Acknowledgments}
-The work presented in this paper has been supported by the UK Engineering and Physical Sciences Research Council (EPSRC) under the grant [EP/V026518/1]. JR is supported by EPSRC grants EP/R02961X/1, EP/S026096/1, EP/V062158/1, and EP/T020792/1, and the Royal Academy of Engineering through the Chair in Emerging Technologies scheme, grant CiET1718\22.
+The work presented in this paper has been supported by the UK Engineering and Physical Sciences Research Council (EPSRC) under the grant [EP/V026518/1]. JR is supported by EPSRC grants EP/R02961X/1, EP/S026096/1, EP/V062158/1, and EP/T020792/1, and the Royal Academy of Engineering through the Chair in Emerging Technologies scheme, grant CiET17182$\backslash$2.
 
 
 %\begin{singlespace}
