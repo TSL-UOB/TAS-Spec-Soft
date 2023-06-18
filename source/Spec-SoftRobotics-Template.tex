@@ -19,6 +19,8 @@
 \usepackage{breakurl}
 \usepackage[normalem]{ulem}
 \usepackage[para]{footmisc}
+
+\usepackage[colorinlistoftodos]{todonotes} % added temporarily by Shane
 %\usepackage{draftwatermark}
 %\SetWatermarkColor[gray]{0.97}
 %\SetWatermarkText{Internal Review}
@@ -95,12 +97,12 @@
 
 \begin{abstract}
 Soft robotics is an emerging technology in which engineers create flexible devices for use in a variety of applications. %, such as surgery, prosthetics, space exploration, and grocery picking. 
-Soft gripping is considered to be one of the most mature areas in soft robotics. 
-In order to advance the wide adoption of soft robots, ensuring their trustworthiness is essential: if soft robots are not trusted, they will not be used to their full potential.% to advance the wide adoption of soft robots. 
+In order to advance the wide adoption of soft robots, ensuring their trustworthiness is essential; if soft robots are not trusted, they will not be used to their full potential. % to advance the wide adoption of soft robots. 
 There are a number of techniques for demonstrating trustworthiness, and common to all is the need to formulate \emph{specifications}. This has received very little attention from the soft robotics community.
-The main contributions of this article are a presentation of the essential need for specification in soft robotic systems and an extensive specification for the trustworthiness of a soft gripper.  This specification covers both functional and non-functional requirements, such as reliability, safety, adaptability, predictability, ethics, and regulations.  
-We also highlight the need to promote \emph{verifiability} as a first-class objective in the design of a soft gripper. 
-We explore our study using a case study of pick-and-place tasks of grocery items involving a recycled soft gripper.
+Here we discuss the importance of developing specifications during development of soft robotic systems and present an extensive example specification for a soft gripper for pick-and-place tasks for grocery items. This specification covers both functional and non-functional requirements, such as reliability, safety, adaptability, predictability, ethics, and regulations.  
+We also highlight the need to promote \emph{verifiability} as a first-class objective in the design of a soft gripper.
+\todo[size=\tiny]{Shane: Think abstract will need revising once rest of paper polished}
+
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -108,27 +110,38 @@ We explore our study using a case study of pick-and-place tasks of grocery items
 \end{IEEEkeywords}
 
 \section{Introduction}\label{introduction}
+%\todo[size=\tiny]{Shane: We need to make case for why specification is important for soft robotics in introduction} DONE
+
 Soft robotics is an emerging technology in which engineers create flexible devices for use in a variety of applications, such as surgery, prosthetics, space exploration, and grocery picking. 
-Soft gripping is considered to be one of the most mature areas in soft robotics. 
+%Soft gripping is considered to be one of the most mature areas in soft robotics. 
 In order to advance the wide adoption of soft robots, ensuring their trustworthiness is essential. 
-According to Mason \cite{Mason1985}, the central issue in robotic manipulation is how to deal with uncertainty. % has been mentioned as the central issue in robotic manipulation \cite{Mason1985}. 
-\emph{Trust} may vary, as it can be gained and lost over time, and different research disciplines define trust in different ways. 
+%According to Mason \cite{Mason1985}, the central issue in robotic manipulation is how to deal with uncertainty. % has been mentioned as the central issue in robotic manipulation \cite{Mason1985}. % Cut by Shane
+\emph{Trust} may vary, as it can be gained and lost over time, and different research disciplines define trust in different ways; in comparison something is \emph{trustworthy} when it is deserving of trust.
+
+
 Autonomous systems (AS) (e.g. soft robotic systems) are considered \emph{trustworthy} when the design, engineering, and operation of these systems generate positive outcomes and mitigate outcomes which can be harmful~\cite{Naiseh2022}.
+% Consider cutting this paragraph - Shane
 Trustworthiness can be dependent on many factors such as: (i) explainability, accountability, and understandability to different users; (ii) robustness in dynamic and uncertain environments; (iii) assurance of their design and operation through verification and validation (V\&V) activities; (iv) confidence in their ability to adapt their functionality as required; (v) security against attacks on the systems, users, and deployed environment; (vi) governance and regulation of their design and operation; and (vii) consideration of ethics and human values in their deployment and use~\cite{Naiseh2022}. 
 
 %The central issue in robotic maltipulation is how to dealwith unccrtainty in Lhe locations and shapes of objects.Humans are cnpablc of effective manipulation in unstructurcd,unprcdictable environments, but robots are not.This deficiency of robots has been addressed in two ways.Most industrial robots finesse the uncertainty problem byorganizing the cnvironme~~t, using special tools to feedand hold parts precisely. A few incluslrial robots usesensors to reduce uncertainty. Most rcsearch laboratoryrobots use the same two approaches-the environment iscon?rolled or scnsors are used.
 
 There are various techniques for demonstrating the trustworthiness of AS, such as formal verification at design-time, runtime verification or monitoring, synthesis and test-based methods \cite{Abeywickrama2022}. 
-However, common to all these techniques is the need to formulate \emph{specifications}. 	
-According to the ISO standard for systems and software engineering vocabulary~\cite{ISO24765:2017}, a \emph{specification} is a detailed formulation that provides a definitive description of a system for the purpose of developing or validating the system. 
-However, the soft robotics community has so far given very little attention to formulating the specifications of soft robotic grippers where most existing works only describe some parameters of the end-effectors such as their dimensions, weight, and material properties (e.g. \cite{Hong2022,Bhattacharya2019,Tadakuma2020,Loh2014,Nishikawa2019,Mohan2020}).  
+However, common to all these techniques is the need to formulate \emph{specifications}. According to the ISO standard for systems and software engineering vocabulary~\cite{ISO24765:2017}, a \emph{specification} is a detailed formulation that provides a definitive description of a system for the purpose of developing or validating the system. 
 
-Meanwhile, \emph{verifiability} is considered key for improving trustworthiness.  Trustworthiness can be increased  by considering verification as an integral part of system specification and system design \cite{Mousavi2022}, where it can be promoted to a format design objective \cite{Eder2021}. 
-Verifiability will essentially lead to systems that, by their construction, are worthy of our trust. 
+\emph{Verifiability} is considered key for improving trustworthiness.  Trustworthiness can be increased  by considering verification as an integral part of system specification and system design \cite{Mousavi2022}, where it can be promoted to a formal design objective \cite{Eder2021}. 
+Verifiability will essentially lead to systems that, by their construction, are worthy of our trust.
+
+Soft robotic grippers for manipulating objects are considered to be one of the most mature areas in soft robotics. However, even for this relatively well advanced application area the soft robotics community has so far given very little attention to formulating specifications for soft robotic grippers. Creating a formal specification as part of a development process is an important step in which the requirments for the system are agreed and defined precisely. The specification then provides a benchmark against which to assess different design options. A well defined specification also provides a set of criteria against which to verify the performance of the system during design and in operation.
+
+% where most existing works only describe some parameters of the end-effectors such as their dimensions, weight, and material properties (e.g. \cite{Hong2022,Bhattacharya2019,Tadakuma2020,Loh2014,Nishikawa2019,Mohan2020}).  
+
+%Meanwhile, \emph{verifiability} is considered key for improving trustworthiness.  Trustworthiness can be increased  by considering verification as an integral part of system specification and system design \cite{Mousavi2022}, where it can be promoted to a formal design objective \cite{Eder2021}. 
+%Verifiability will essentially lead to systems that, by their construction, are worthy of our trust.
+
 %, and to this end, it can be promoted to a first-class system design objective \cite{Eder2021}. 
 The main contributions of this paper are as follows:
 \begin{itemize}
-	\item We provide an extensive specification to ensure the trustworthiness of a soft robotic gripper \cite{Partridge2022} with both functional and non-functional requirements, such as reliability, safety, adaptability, predictability, ethics, and regulations.
+	\item We provide an extensive example specification to ensure the trustworthiness of a soft robotic gripper \cite{Partridge2022} with both functional and non-functional requirements, such as reliability, safety, adaptability, predictability, ethics, and regulations.
 	\item We highlight the importance of promoting \emph{verifiability} as a first-class objective in the design of a soft robotic gripper. 
 \end{itemize}
 We explore this novel topic using a case study of pick-and-place tasks of grocery items involving a recycled soft gripper \cite{Partridge2022}. 
@@ -147,7 +160,9 @@ Finally, a summary and conclusions are provided in Section~\ref{summary-conclusi
 %[Short Summary of recycled soft gripper paper by \cite{Partridge2022}, which is used in the current study]
 %\textbf{[Alix Partridge to provide this short subsection -- about 300 words]}
 %\\\\\\
-The soft robotic gripper used in this study is a two-finger fluidic elastomer actuator, measuring 12 x 134 x 6 mm \cite{Partridge2022}. The gripper is fabricated using a two-part moulding process with a fabric-constraining layer and comprises a mix of 70\% pristine EcoFlex 00-30 silicone elastomer and 30\% recycled EcoFlex 00-30 granules that are 1 mm to 2 mm in size.%, as detailed in \cite{Partridge2022}. %within Partridge et al. (https://ieeexplore.ieee.org/document/9762170).  
+The soft robotic gripper used in this study is a two-finger fluidic elastomer actuator, measuring 12 x 134 x 6 mm \cite{Partridge2022}. The gripper is fabricated using a two-part moulding process with a fabric-constraining layer and comprises a mix of 70\% pristine EcoFlex 00-30 silicone elastomer and 30\% recycled EcoFlex 00-30 granules that are 1 mm to 2 mm in size.%, as detailed in \cite{Partridge2022}. %within Partridge et al. (https://ieeexplore.ieee.org/document/9762170).
+
+\todo[size=\tiny]{Shane: It would be great to add a figure of the gripper here}
 
 The operating procedure for the gripper is simple. To actuate the gripper, a positive pressure is introduced to the system that acts to inflate chambers within the gripper body. As the chambers expand, the constraining layer on the base of the gripper prevents expansion of the base of each chamber, while the top of each chamber is free to expand. This differential expansion of top and bottom results in a curving of each chamber, which then leads to an overall curling of the gripper fingers to grasp an object. When vented, this pressure is removed, and the gripper fingers return to a flattened state. 
 
@@ -155,17 +170,17 @@ The operating procedure for the gripper is simple. To actuate the gripper, a pos
 %The soft robotic gripper used within this study is a two-finger fluidic elastomer actuator, measuring 12 x 134 x 6 mm. The gripper is fabricated using a two-part moulding process with a fabric constraining layer and comprises a mix of 70\% pristine EcoFlex 00-30 silicone elastomer and 30\% recycled EcoFlex 00-30 granules that are 1 mm to 2 mm in size, as detailed within Partridge et al. (https://ieeexplore.ieee.org/document/9762170).  
 %
 %The operating procedure for the gripper is simple. Upon actuation of the gripper, a positive pressure is introduced to the system that acts to inflate chambers within the gripper body. As the chambers expand, the constraining layer on the base of the gripper prevents expansion of the base of each chamber, while the top of each chamber is free to expand. This differential expansion of top and bottom results in a curving of each chamber, which then leads to an overall curling of the gripper fingers. When vented, this pressure is removed, and the gripper fingers return to a flattened state. 
-\subsubsection{Standards}
-Although no direct industry \emph{standards} have been defined for soft grippers so far, there are several standards in the area of rigid robotics that provide: (i) a set of terminology and definitions for robotic hands and grippers; and (ii) guidance related to the safe spaces, speeds, and forces that a gripping system needs to function. 
+\subsubsection{Standards} % Condensed by Shane
+Although no direct industry standards have been defined for soft grippers so far, there are several standards in the area of rigid robotics that provide: (i) a set of terminology and definitions for robotic grippers (ISO 14539:2000) and hands  \cite{Falco2018}}); and (ii) guidance related to the safe spaces, speeds, and forces that a gripping system needs to function (ISO 10218-1, ISO 10218-2, and ISO/TS 15066). 
 
-\emph{ISO 14539:2000} standard targets the manipulating of industrial robots, and provides terms to describe object handling and terms of functions, structures, and elements of grasp-type grippers \cite{ISO14539:2000}.
-Later, in 2018, a working group under the IEEE Technical Committee for Robotic Hands, Grasping and Manipulation proposed a standard \cite{Falco2018} that provides a set of terminology and associated definitions for robotic hands. % (see pg. 3 for a definition for soft robotics). 
+%\emph{ISO 14539:2000} standard targets the manipulating of industrial robots, and provides terms to describe object handling and terms of functions, structures, and elements of grasp-type grippers \cite{ISO14539:2000}.
+%Later, in 2018, a working group under the IEEE Technical Committee for Robotic Hands, Grasping and Manipulation proposed a standard \cite{Falco2018} that provides a set of terminology and associated definitions for robotic hands. % (see pg. 3 for a definition for soft robotics). 
 %It covers terms relevant to defining performance for robotic hands. %\emph{Proposed Standard Terminology for Robotic Hands and Associated Performance Metrics} standard \cite{Falco2018} provides 
 %focuses on the functionalities of end effectors and concentrates on grasp type grippers \cite{ISO14539:2000}. It specifically targets manipulating of industrial robots and provides terms to describe object handling and terms of functions, structures, and elements of grasp-type grippers.
-\emph{ISO 10218-1}, \emph{ISO 10218-2}, and \emph{ISO/TS 15066} standards propose safety requirements for industrial robots and their integration, and collaborative industrial robot systems. 
-They describe safety guidance related to different spaces associated with a robot application (i.e. maximum, restricted, operating, safeguarded); speed and separation monitoring using detecting zones; and safety functions for end-effector force and pressure. 
+%\emph{ISO 10218-1}, \emph{ISO 10218-2}, and \emph{ISO/TS 15066} standards propose safety requirements for industrial robots and their integration, and collaborative industrial robot systems. 
+%They describe safety guidance related to different spaces associated with a robot application (i.e. maximum, restricted, operating, safeguarded); speed and separation monitoring using detecting zones; and safety functions for end-effector force and pressure. 
 %In \emph{ISO/TS 15066}, similar guidance is provided with respect to the shared spaces of collaborative industrial robot systems. 
-In 2022, the ASTM International committee on robotics, automation, and autonomous systems (F45) formed a new subcommittee on grasping and manipulation, which will develop standards that evaluate performance of grasping type end-effectors.  
+%In 2022, the ASTM International committee on robotics, automation, and autonomous systems (F45) formed a new subcommittee on grasping and manipulation, which will develop standards that evaluate performance of grasping type end-effectors.  
 
 %This new subcommittee (F45.05) of ASTM (formerly known as American Society for Testing and Materials) will develop standards that evaluate performance in several major areas of robotic manipulation.
 %
@@ -182,6 +197,9 @@ In 2022, the ASTM International committee on robotics, automation, and autonomou
 %In service robotics, \emph{ISO 13482 }covers the hazards presented by the robots and devices for applications in non-industrial environments for providing services. \emph{ISO 23482-1} and \emph{ISO 23482-2} standards extend ISO 13482 with guidance and methods that can be used to test personal care robots. ...
 
 \subsection{Related Work}\label{relatedwork}
+
+\todo[size=\tiny]{Shane: This needs to be summarized rather than be a description of seperate papers. Needs to be condensed to make room for figure and additional subsection on why we need specification.}
+
 In \cite{Cheng2021}, the authors propose a three-finger soft-rigid gripper actuated by a soft pneumatic actuator for the low-damage gripping of fragile and soft objects. 
 By conducting a series of static and dynamic gripping tests that use different forces and fingertip displacements, the authors demonstrate enhancements to the \emph{performance} and \emph{adaptability} of their gripper.  %linear-extension 
 
@@ -203,20 +221,19 @@ In \cite{Shin2021}, the authors propose a soft gripper for smart manufacturing t
 As discussed, most existing works (e.g. \cite{Cheng2021,Liu2021,Chen2018,Cai2021,Hwang2020,Shin2021}) describe improving \emph{adaptability} or \emph{performance} of a soft gripper. However, these works do not cover a broad range of properties for trustworthiness, as considered in our study. %one or two trustworthiness properties of a soft gripper like 
 Furthermore, most existing approaches (e.g. \cite{Hong2022,Bhattacharya2019,Tadakuma2020,Loh2014,Nishikawa2019,Mohan2020}) only describe some parameters of the end-effector, such as their dimensions, weight, and material properties.%, and no work proposes a wide-ranging specification for trustworthiness.%, as proposed in our study.
 
-
 \subsection{Case Study: Pick-and-Place Tasks of Grocery Items}
 %Let us consider an automated warehouse, where items are picked from storage crates which then need to be placed in delivery crates for assembling and delivery. 
 %The items vary in their shape, size, orientation and packaging which make the automation challenging. 
 %Other challenges are constrained and relatively cluttered space to operate on; and fragile or deformable nature of certain items. 
 %Furthermore, there can be the presence of other uncertainties, such as manufacturing inconsistencies; and temporal nature of the fabrics used in the gripper which can lead to degradation of performance. 
-Let us consider an automated warehouse, where items are picked from storage crates and are then placed in delivery crates for assembling and delivery. 
-There are several uncertainties that contribute to making the automation challenging: (i) items can vary in their shape, size, packaging, and orientation; (ii) fragile or deformable nature of certain items; (iii) constrained and relatively cluttered space to operate in; (iv) manufacturing inconsistencies; and (v) temporal nature of the materials used in the gripper, which can lead to performance degradation. 
+Let us consider an automated warehouse, where items are picked from storage crates and are then placed in delivery crates for delivery. An example grocery use case is that of Ocado, which is considered the world's largest online-only supermarket \cite{Triantafyllou2019, Sotiropoulos2018}. 
+A range of uncertainties make automation of this process challenging: (i) items can vary in their shape, size, packaging, and orientation; (ii) some items are fragile or deformable; (iii) constrained and relatively cluttered space to operate in; (iv) manufacturing inconsistencies; and (v) elastic nature of the materials used in the gripper, which can lead to performance degradation.
+\todo[size=\tiny]{Shane: Not sure about point iii and iv - why are automated warehouses constrained and cluttered? - manufacturing inconsistencies of robots or grocery items?} 
 
-In this case study, we consider four \emph{classes} of items: (i) \emph{soft–fragile} items (e.g. cake, bread, strawberry, bayberry), (ii) \emph{soft–non-fragile} items (e.g. dish sponge), (iii) \emph{hard–fragile} items (e.g. light bulb, egg), (iv) \emph{hard–non-fragile} items (e.g. plastic spoon). 
-The objects being picked can be regular-shaped items (e.g. sphere, cube, cone, pyramid, cylinder) or irregular-shaped ones (e.g. strawberries).
+In this case study, we consider four \emph{classes} of items: (i) \emph{soft-fragile} items (e.g. cake, bread, strawberry, bayberry), (ii) \emph{soft-non-fragile} items (e.g. dish sponge), (iii) \emph{hard-fragile} items (e.g. light bulb, egg), (iv) \emph{hard-non-fragile} items (e.g. plastic spoon). 
+The objects being picked can be regular-shaped items (e.g. sphere, cube, cone, pyramid, cylinder) or irregular-shaped ones (e.g. strawberries). The robotic pick-and-place task can be structured into a pipeline of four main tasks: (i) pre-grasping, (ii) ascension (grasping), (iii) translation (transport), and (iv) descension (placement). 
 %Soft finger can conform to the object’s surface with stable grasping and environmental endurance.
-The robotic pick-and-place task can be structured into a pipeline of four main tasks: (i) pre-grasping, (ii) ascension (grasping), (iii) translation (transport), and (iv) descension (placement). 
-An example is the grocery use case of Ocado, which is considered the world's largest online-only supermarket \cite{Triantafyllou2019, Sotiropoulos2018}. 
+% An example is the grocery use case of Ocado, which is considered the world's largest online-only supermarket \cite{Triantafyllou2019, Sotiropoulos2018}. 
 
 %\subsubsection{Approaches on soft robotics specifications} 
 
@@ -280,8 +297,8 @@ An example is the grocery use case of Ocado, which is considered the world's lar
 %We have applied the level set-based optimization approach tosynthesize a soft gripper. By modelling the interactions betweenthe gripper and objects as the boundary conditions and appliedloads, the mechanical design problem is recast as a mathematicaloptimization problem. The experimental tests show that theoptimized gripper can handle a large range of unknown objectswith different grasping modes.
 %-----------------------------------------------------------------------------------------------------------------------------------------
 %Pneumatic Webbed Soft Gripper for Unstructured Grasping
-%In this study, a pneumatic webbed soft gripper to grasp unstructured and fragile objects was developed and evaluated. 
-%Inspired by duck foot and octopus tentacle, a pneumatic webbed soft gripper was proposed, which is consisted of four multi-chambered fingers and four webs. 
+%In this study, a pneumatic webbed soft gripper to grasp unstructured and fragile objects was developed and evaluated. 
+%Inspired by duck foot and octopus tentacle, a pneumatic webbed soft gripper was proposed, which is consisted of four multi-chambered fingers and four webs. 
 %Figure shows the experimental results of grasping delicate objects of egg, strawberry, candy and knife. 
 %The successful grasping of egg and strawberry demonstrated the safety and adaptability of the webbed soft gripper for fragile and crisp objects, especially food and agricultural products.
 %
@@ -322,10 +339,17 @@ An example is the grocery use case of Ocado, which is considered the world's lar
 
 %Approaches on pick-and-place tasks (e.g. SoMa project and Ocado grocery example) \cite{Negrello2020,Triantafyllou2019,Sotiropoulos2018, Pozzi2016,Bianchi2018}...
 
-\section{Specification of a Soft Gripper}\label{specification-gripper}
+\section{Example Specification of a Soft Gripper}\label{specification-gripper}
 %Trustworthiness of a soft gripper can be dependent on both functional and non-functional properties, such as predictability, reliability, adaptability and safety. 
 %These properties are especially significant for a soft gripper in situations such as ...
-In this section, we present a wide-ranging specification with several functional and non-functional properties which affect the trustworthiness of a soft gripper, such as predictability, reliability, adaptability, safety, ethics, and regulations (see Fig.\ref{SR-spec}). Below we define the set of reqirements \{RQx\} for a soft gripper across these six properties.
+In this section, we present an example of a wide-ranging specification with functional and non-functional properties which affect the trustworthiness of a soft gripper, we define these in terms of predictability, reliability, adaptability, safety, ethics, and regulations (see Fig.\ref{SR-spec}). 
+
+%\todo[size=\tiny]{Shane: Explain how specification developed. Add in explaination of functional vs non-functional requirements} DONE
+
+This example specification was developed through consultation with soft robotic developers, industrial users, ethicists, sociologists and from published requirements. It is an example of the aspects that may need to be specified for a soft gripper rather than a complete specification for every aspect of the system. The specification was developed following the guidance on writing good requirements provided in \cite{NASA2007}. The specification includes functional requirements - those needed to achieve the technical task, and non-functional requirements - those related to the broader operation of the system, such as ethical and regulatory considerations. 
+% added by Shane
+
+Below we define the set of reqirements \{RQx\} for a soft gripper across these six properties.
 We define the boundaries to measure the success of gripping an item using the conventional bounds of 95\% for success and 5\% for failure. 
 Also, in the following, whenever a performance threshold is given, where possible we aim to provide a reference from a published work/experiment. 
 % and 95% success
@@ -360,7 +384,7 @@ Predictability is ``a property of interaction concerning the degree of confidenc
 	\item RQ1.4: The gripper \emph{shall} grasp, transport, and place an item successfully with a repeatability of $\ge$95\%.
 %	\item RQ1.4: The gripper \emph{shall} grasp, transport and place an item under same conditions with a $\ge$95\% pick-and-place repeatability.
 %	\item RQ1.4: The fingers \emph{shall} be in a stable state -- pre-pressurized/inflated 10 times, prior to being used.  
-	\item RQ1.5: The fingers \emph{shall} be inflated with a pressure between 3 and 4 psi pressure range \cite{Partridge2022}. 
+	\item RQ1.5: The fingers \emph{shall} be inflated with a pressure between 3 and 4 psi pressure range \cite{Partridge2022}. 
 	\item RQ1.6: The fingers \emph{shall} be inflated with a flow rate between 2 and 3.2 L/min range \cite{DEWIN2022}.
 \end{itemize}
 
@@ -375,7 +399,7 @@ Predictability is ``a property of interaction concerning the degree of confidenc
 %		\hline
 %		RQ1.4 & The fingers \emph{shall} be in a stable state -- pre-pressurized/inflated 10 times, prior to being used. \\ 
 %		\hline
-%		RQ1.5 & The fingers \emph{shall} be inflated with a pressure between 3-4 psi pressure range. \emph{(Note: \cite{Partridge2022})} \\
+%		RQ1.5 & The fingers \emph{shall} be inflated with a pressure between 3-4 psi pressure range. \emph{(Note: \cite{Partridge2022})} \\
 %		\hline
 %		RQ1.6 & The fingers \emph{shall} be inflated with a flow rate between 2-3.2 L/min range. \emph{(Note: \cite{DEWIN2022})} \\	[1ex] 		
 %		\hline
@@ -389,45 +413,45 @@ Predictability is ``a property of interaction concerning the degree of confidenc
 %		\hline
 %		RQ2.1 & The gripper \emph{shall} hold the item being gripped without damaging it.  \\ 
 %		\hline
-%		RQ2.2 & The gripper \emph{shall} hold the item being gripped without dropping it for at least 10 seconds 95\% of the time.  \emph{(Note: \cite{Sotiropoulos2018}, pg. 652))}\\ 
+%		RQ2.2 & The gripper \emph{shall} hold the item being gripped without dropping it for at least 10 seconds 95\% of the time.  \emph{(Note: \cite{Sotiropoulos2018}, pg. 652))}\\ 
 %		\hline
-%		RQ2.3 & The gripper \emph{shall} successfully maintain grasp during translation of the gripped item for a maximum velocity and acceleration of 0.03 m/s and 150 mm/s$^2$. \emph{(Note: \cite{Triantafyllou2019}, pg. 5; \cite{Cheng2021}, pg. 15))}\\
+%		RQ2.3 & The gripper \emph{shall} successfully maintain grasp during translation of the gripped item for a maximum velocity and acceleration of 0.03 m/s and 150 mm/s$^2$. \emph{(Note: \cite{Triantafyllou2019}, pg. 5; \cite{Cheng2021}, pg. 15))}\\
 %		\hline
 %		RQ2.4& The gripper \emph{shall} successfully grasp when the rate of inflation is in the range of 2-3.2 L/min. \emph{(Note: \cite{DEWIN2022})}\\
 %		\hline
-%		RQ2.5 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in dropping of an item across 100 hours of operation. (comment by SW: consider degradation rate instead?) \\			\hline	
-%		RQ2.6 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in damaging of an item across 100 hours of operation.  (comment by SW: consider degradation rate instead?) \\		[1ex] 		
+%		RQ2.5 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in dropping of an item across 100 hours of operation. (comment by SW: consider degradation rate instead?) \\			\hline	
+%		RQ2.6 & [\emph{Graceful degradation}] The gripper \emph{shall} experience $\le$ 5\% increase in damaging of an item across 100 hours of operation.  (comment by SW: consider degradation rate instead?) \\		[1ex] 		
 %		\hline
 %	\end{tabular}
 %\end{center}
 \begin{itemize}
 	\item RQ2.1: The gripper \emph{shall} hold the item being gripped without damaging it. 
-	\item RQ2.2: The gripper \emph{shall} hold the item being gripped without dropping it for at least 10 seconds 95\% of the time (\cite{Sotiropoulos2018}, p. 652).
-	\item RQ2.3: The gripper \emph{shall} successfully maintain grasp during the translation of the gripped item for a maximum velocity and acceleration of 0.03 m/s and 0.15 m/s$^2$ (\cite{Triantafyllou2019}; \cite{Cheng2021}).
+	\item RQ2.2: The gripper \emph{shall} hold the item being gripped without dropping it for at least 10 seconds 95\% of the time (\cite{Sotiropoulos2018}, p. 652).
+	\item RQ2.3: The gripper \emph{shall} successfully maintain grasp during the translation of the gripped item for a maximum velocity and acceleration of 0.03 m/s and 0.15 m/s$^2$ (\cite{Triantafyllou2019}; \cite{Cheng2021}).
 	\item RQ2.4: The gripper \emph{shall} successfully grasp when the rate of inflation is in the range of 2-3.2 L/min \cite{DEWIN2022}.
-	\item RQ2.5: The gripper \emph{shall} experience $\le$ 5\% increase in the dropping of an item across 100 hours of operation (graceful degradation). %(comment by SW: consider degradation rate instead?) 
-	\item RQ2.6: The gripper \emph{shall} experience $\le$ 5\% increase in the damaging of an item across 100 hours of operation (graceful degradation).  %(comment by SW: consider degradation rate instead?) 
+	\item RQ2.5: The gripper \emph{shall} experience $\le$ 5\% increase in the dropping of an item across 100 hours of operation (graceful degradation). %(comment by SW: consider degradation rate instead?) 
+	\item RQ2.6: The gripper \emph{shall} experience $\le$ 5\% increase in the damaging of an item across 100 hours of operation (graceful degradation).  %(comment by SW: consider degradation rate instead?) 
 \end{itemize}
 \paragraph{Adaptability} \label{adaptability}
 \emph{Adaptability} is defined as the ``degree to which a product or system can effectively and efficiently be adapted for different or evolving hardware, software or other operational or usage environments" \cite{ISO24765:2017}. In a soft gripper, \emph{adaptability} is key to manipulating objects of various sizes, shapes, masses, and positions/orientations. 
 \begin{itemize}
-	\item RQ3.1: The gripper \emph{shall} hold items of different sizes up to a maximum of 95\% of the opening width of the two fingers without dropping them for at least 10 seconds 95\% of the time.
-	\item RQ3.2: The gripper \emph{shall} hold items of different shapes (e.g. sphere, cube, cone, pyramid, cylinder) without dropping them for at least 10 seconds 95\% of the time.
-	\item RQ3.3: The gripper \emph{shall} hold items, which can be of regular or irregular shape (e.g. soft-fragile items like strawberry), without dropping them for at least 10 seconds 95\% of the time.
-	\item RQ3.4: The gripper \emph{shall} hold an item independent of its orientation without dropping it for at least 10 seconds 95\% of the time. 	  
+	\item RQ3.1: The gripper \emph{shall} hold items of different sizes up to a maximum of 95\% of the opening width of the two fingers without dropping them for at least 10 seconds 95\% of the time.
+	\item RQ3.2: The gripper \emph{shall} hold items of different shapes (e.g. sphere, cube, cone, pyramid, cylinder) without dropping them for at least 10 seconds 95\% of the time.
+	\item RQ3.3: The gripper \emph{shall} hold items, which can be of regular or irregular shape (e.g. soft-fragile items like strawberry), without dropping them for at least 10 seconds 95\% of the time.
+	\item RQ3.4: The gripper \emph{shall} hold an item independent of its orientation without dropping it for at least 10 seconds 95\% of the time. 	  
 \end{itemize}
 %\begin{center}
 %	\begin{tabular}{|p{7mm}|p{72mm}|}
 %		\hline
-%RQ3.1 & The gripper \emph{shall} hold items of different sizes up to a maximum of 95\% of the opening width of the two fingers without dropping it for at least 10 seconds 95\% of the time. \\
+%RQ3.1 & The gripper \emph{shall} hold items of different sizes up to a maximum of 95\% of the opening width of the two fingers without dropping it for at least 10 seconds 95\% of the time. \\
 %\hline
-%RQ3.2 & The gripper \emph{shall} hold items of different shapes (e.g. sphere, cube, cone, pyramid, cylinder) without dropping it for at least 10 seconds 95\% of the time. \\[1ex] 
+%RQ3.2 & The gripper \emph{shall} hold items of different shapes (e.g. sphere, cube, cone, pyramid, cylinder) without dropping it for at least 10 seconds 95\% of the time. \\[1ex] 
 %\hline
-%RQ3.3 & The gripper \emph{shall} hold items, which can be of regular or irregular shape, without dropping it for at least 10 seconds 95\% of the time. \\ 
+%RQ3.3 & The gripper \emph{shall} hold items, which can be of regular or irregular shape, without dropping it for at least 10 seconds 95\% of the time. \\ 
 %\hline
 %
 %
-%RQ3.4 & The gripper \emph{shall} hold an item independent of its orientation without dropping it for at least 10 seconds 95\% of the time. \\ 	 
+%RQ3.4 & The gripper \emph{shall} hold an item independent of its orientation without dropping it for at least 10 seconds 95\% of the time. \\ 	 
 %\hline
 %\emph{\sout{RQ3.5}} & \emph{\sout{Non-symmetrical objects \emph{shall} be successfully grasped (no slipping) when it is picked with X–Y* rotational offset for at least 10 seconds 95\% of the time.}}  \\ 
 %\hline
@@ -446,9 +470,9 @@ In this study, we consider safety from the perspective of the item being gripped
 	\item RQ4.1: The item being gripped \emph{shall} be motionless (to minimise harm) before contact with the gripper. 
 	\item RQ4.2: The gripping system \emph{shall} not collide with the item being gripped. 
 	\item RQ4.3: The gripping system \emph{shall} only make contact with the item using the gripper.
-	\item RQ4.4: When grasping a hard–fragile item (e.g. light bulb, egg), the soft actuator \emph{shall} be inflated until the gripping force does not exceed 2 N (\cite{Cheng2021}).
-	\item RQ4.5: When grasping a soft–fragile item like cake or bread, the soft actuator \emph{shall} be inflated until the fingertip displacement does not exceed 3 mm (\cite{Cheng2021}).
-	\item RQ4.6: When grasping a soft–fragile item like strawberry or raspberry, the soft actuator \emph{shall} be inflated until the gripping force does not exceed 1 N and the fingertip displacement does not exceed 1 mm (\cite{Cheng2021}, p. 14).
+	\item RQ4.4: When grasping a hard-fragile item (e.g. light bulb, egg), the soft actuator \emph{shall} be inflated until the gripping force does not exceed 2 N (\cite{Cheng2021}).
+	\item RQ4.5: When grasping a soft-fragile item like cake or bread, the soft actuator \emph{shall} be inflated until the fingertip displacement does not exceed 3 mm (\cite{Cheng2021}).
+	\item RQ4.6: When grasping a soft-fragile item like strawberry or raspberry, the soft actuator \emph{shall} be inflated until the gripping force does not exceed 1 N and the fingertip displacement does not exceed 1 mm (\cite{Cheng2021}, p. 14).
 \end{itemize}
 %\begin{center}
 %	\begin{tabular}{|p{7mm}|p{72mm}|}
@@ -479,12 +503,13 @@ Human values inform the design and use of technologies, and the resulting distri
         \item RQ5.4: The gripper \emph{shall} accommodate fair treatment of current human workers.
 \end{itemize}
 
-The use of a recycled gripper may make its manufacturers or the company deploying it \emph{look like} they care for the environment and so appear more trustworthy, thus increasing public trust in them. However, such a system may not perform as well as, or may degrade more rapidly than, a system made of virgin material, thus making it more likely for items to be dropped or damaged. When the item being gripped is food, the risk of food waste increases, with detrimental implications for the environment. Unless the above reliability requirements are met by design, the use of a recycled gripper could be a form of “greenwashing” \cite{delmas2011drivers}.    
+The use of a recycled gripper may make its manufacturers or the company deploying it \emph{look like} they care for the environment and so appear more trustworthy, thus increasing public trust in them. However, such a system may not perform as well as, or may degrade more rapidly than, a system made of virgin material, thus making it more likely for items to be dropped or damaged. When the item being gripped is food, the risk of food waste increases, with detrimental implications for the environment. Unless the above reliability requirements are met by design, the use of a recycled gripper could be a form of "`greenwashing"'� \cite{delmas2011drivers}.    
 
 Moreover, while technical requirements aim to prevent \emph{physical} harm, specifying for trustworthiness should include considerations of potential \emph{psychological} harm \cite{Porter2022}. By replicating a human feature (fingers/hand) and behaviour (gripping) without being human-like enough to convince, a soft gripper risks could produce an uncanny valley effect \cite{moore2012bayesian} that distresses humans. User studies should identify gripper shapes that are acceptable to humans, whilst aiming for optimal gripping.  
 	
  
 Simultaneously, the biomimetic features of soft grippers risk exploiting humans’ trust heuristics, which make them trust things they are already familiar with \cite{Manzini}. Because soft robots present many safety loopholes \cite{abidi2017intrinsic}, trust in the safety of a soft gripper could be misplaced if it was only based on a sense of familiarity with it. To reduce risks of harm, the robot area should be clearly separated from the space accessible to humans.
+\todo[size=\tiny]{Shane: many safety loopholes needs a little bit of explaination}
 
 % next paragraph could be removed if space is needed - it is not very related specifically to gripper specification, but is a general statement on automation.
 %Finally, increased warehouse automation through soft gripper deployment may improve efficiency in grocery settings, thus leading to decreased costs to the advantage of consumers; it could also relieve workers from routine or physically demanding tasks. However, in the transition to increased automation, current human pickers may be treated unfairly, due to decreased employment opportunities or dramatic changes in the skills required of employees. Company policies should be implemented to retrain or upskill current workers \cite{georgieff2021happened}.
@@ -493,7 +518,9 @@ Simultaneously, the biomimetic features of soft grippers risk exploiting humans�
 %\textbf{Responsible author: Pete Winter}\\
 %\textbf{(Maximum 350 words)}\\
 
-Macrae’s \cite{Macrae2022} ‘SOTEC’ (structural, organisational, technological, epistemic, and cultural) framework is a useful approach for identifying domains of sociotechnical risk in autonomous and intelligent systems (AIS). The schema can help inform emergent regulation by identifying often-neglected risks. Below we outline each category and consider its application to the pick-and-place tasks of grocery items.
+\todo[size=\tiny]{Shane: This doesnt fit pattern of previous sections. I think it needs to be its own section with a bit of explaination for context. Or alternatively for each element to have an example requirement RQ6.x}
+
+Macrae’s \cite{Macrae2022} ‘SOTEC’ (structural, organisational, technological, epistemic, and cultural) framework is a useful approach for identifying domains of sociotechnical risk in autonomous and intelligent systems. The schema can help inform emergent regulation by identifying often-neglected risks. Below we outline each category and consider its application to the pick-and-place tasks of grocery items.
 
 %\emph{Structural} sources of risk arise from interactions between different human and nonhuman elements that amplify or transmit local failures in a system in ways that disable the entire system. 
 \emph{Structural} sources of risk arise from interactions between human and nonhuman elements in a system.
@@ -506,7 +533,7 @@ In a pick-and-place task, such risks may arise from unanticipated disruptions, s
 
 \emph{Epistemic} sources of risk arise from the inherent indeterminacies of knowledge, which create pockets of ignorance that hide unexpected hazards. Such pockets are difficult to mitigate (since we don’t know what we don’t know) but it can be anticipated that the system’s attempt to grasp the object could fail for unexpected reasons, and tailor regulatory provisions in ways that promote resilience and learning. 
 
-\emph{Cultural} sources of risk arise from collective values (beliefs and norms) that frame and influence AIS design and operation. For instance, if a gripper’s grasp is optimised for western food items (e.g. tins), this may mean that it underperforms for eastern food items (e.g. bags), negatively affecting a minority of stakeholders. Regulatory requirements must reflect critically on their underlying values, and work to counter potential inequities. 
+\emph{Cultural} sources of risk arise from collective values (beliefs and norms) that frame and influence AS design and operation. For instance, if a gripper’s grasp is optimised for western food items (e.g. tins), this may mean that it underperforms for eastern food items (e.g. bags), negatively affecting a minority of stakeholders. Regulatory requirements must reflect critically on their underlying values, and work to counter potential inequities. 
 
 
 % Original first writing of author
@@ -522,51 +549,10 @@ In a pick-and-place task, such risks may arise from unanticipated disruptions, s
 %
 %Cultural sources of risk arise from collective values — beliefs, norms, mores — that frame and influence AIS design and operation. So it might be, for instance, that grippers might come to be optimised for overall efficiency even if it means they underperform in niche tasks that only affect a minority of stakeholders. Regulatory requirements must reflect critically on their underlying values, and work to counter potential inequities. 
 
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-%PLACEHOLDER FOR PW\\
-
 \section{Verifiability of a Soft Gripper} \label{verifiability}
+\todo[size=\tiny]{Shane: I think we need a linking sentence or two here to help reader relate specification to verification. Just a high level overview of how the two are related.}
 %6.2 Verification and validation methodsVerification and validation can be satisfied by methods including but not limited to:—A visual inspection;—B practical tests;—C measurement;—D observation during operation;—E review of application-specific schematics, circuit diagrams and design material;—F review of safety-related application software and/or software documentation;—G review of task-based risk assessment;—H review of layout drawings and documents;—I review of specifications and information for use.See Table G.1.
-The notion of \emph{verifiability} is considered key to improving the trustworthiness of an AIS, such as a soft robotic system. 
+The notion of \emph{verifiability} is considered key to improving the trustworthiness of an AS, such as a soft robotic system. 
 A unified and holistic approach to verifiability will lead to systems that are by their construction worthy of our trust \cite{Mousavi2022}. 
 %Our vision is that such a unified andholistic approach to verifiability will fundamentallychange our approach to the verification ofautonomous systems and will lead to systems thatare by their construction are worthy of our trust.
 %To this end, one can seek to promote verifiability to a first-class system design objective \cite{Eder2021}. ...
@@ -575,13 +561,13 @@ Verifiability can be achieved by considering verification early, such as during 
 For a system to be {\em verifiable\/}, a person or a tool needs to be able to check its correctness~\cite{ISO24765:2017} with respect to its requirements and specification \cite{Abeywickrama2022}. 
 The main challenge is in specifying and designing the system in such a way that this process is made as easy and intuitive as possible.
 %
-For AIS in particular, specific challenges include 
+For AS in particular, specific challenges include 
 %
 (i) capturing and formalising requirements including functionality, safety, security, performance and, beyond these, any additional non-functional requirements purely needed to demonstrate trustworthiness; 
 %	 
 (ii) handling flexibility, adaptation, and learning; and 
 %
-(iii) managing the inherent complexity and heterogeneity of both the AIS and the environment it operates in. 
+(iii) managing the inherent complexity and heterogeneity of both the AS and the environment it operates in. 
 %With respect to these i--iii challenges, our study has taken key steps towards addressing them. We propose a wide-ranging specification of requirements to demonstrate trustworthiness (Section~\ref{specification-gripper}); and the specification includes requirements that adapts the soft gripper to objects of different sizes, shapes, masses and orientations/positions.
 
 
@@ -803,30 +789,6 @@ In this manner, our study not only provides a wide-ranging specification for a p
 
 %Meanwhile, \emph{verifiability} is considered key for improving trustworthiness, which can be realized by considering verification early as an integral part during specification, and system design \cite{Mousavi2022} where it can be promoted to a first-class system design objective \cite{Eder2021}. 
 %Verifiability will essentially lead to systems that are by their construction are worthy of our trust. 
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
-%PLACEHOLDER FOR VERIFIABILITY \\
 
 %In this subsection, we will discuss how we propose to make the requirements verifiable (raw requirements to verifiable requirements, and explain the delta)...
 
@@ -852,9 +814,14 @@ In this manner, our study not only provides a wide-ranging specification for a p
 %\cite{Cheng2021,Bhattacharya2019,Bianchi2018,Cai2021,Chen2018,Hong2022,Farrell2022,Hwang2020,Liu2021,Loh2014,Mohan2020,Negrello2020,Nishikawa2019,Pozzi2016,Shin2021,Sotiropoulos2018,Tadakuma2020,Triantafyllou2019}
 
 \section{Summary and Conclusions} \label{summary-conclusions}
-As soft robotics and automation continue to expand, flexible devices are created by engineers to be used in new and diverse applications like grocery picking, space exploration, surgery, and prosthetics. 
+%As soft robotics and automation continue to expand, flexible devices are created by engineers to be used in new and diverse applications like grocery picking, space exploration, surgery, and prosthetics. 
 %As soft robotics and automation continue to expand into new and diverse industries
 %With the advancement of soft robotics as an emerging technology, flexible devices are created by soft roboticists to be used in different applications like grocery picking, space exploration, surgery, and prosthetics. 
+\todo[size=\tiny]{Shane: I think the conclusions need revising to emphasise importance of specification - at moment mulitdisciplinary part is rather vague.}
+
+As soft robotics continue to expand into new and diverse industries it is important to consider the design processes used, particularly the development of detailed specifications which can be used to define the requirements for a system and ensure that both functional and non-functional aspects are considered from an early stage of the development process.
+
+
 Within soft robotics, soft gripping is considered to be one of the most mature areas. 
 For wider adoption and acceptability, we must build soft grippers worthy of trust regarding safety, predictability, adaptability, and other non-functional properties. 
 A key limitation of the existing approaches is that they only cover a very limited range of properties, such as performance and adaptability.  
@@ -1017,7 +984,8 @@ The work presented in this paper has been supported by the UK Engineering and Ph
 %\begin{singlespace}
 %	\tiny
 \bibliographystyle{IEEEtran}
-\bibliography{Spec-SoftRobotics-Bibliography.bib}
+%\bibliography{Spec-SoftRobotics-Bibliography.bib}
+\bibliography{Spec-SoftRobotics-Bibliography}
 %\end{singlespace}
 \newpage
 
