@@ -57,7 +57,7 @@
 
 
 \author{Dhaminda B. Abeywickrama$^{*1}$, Nguyen Hao Le$^{1}$, Greg Chance$^{1}$,  Peter D. Winter$^{1}$, Arianna Manzini$^{1}$, Alix J. Partridge$^{1}$, \\Jonathan Ives$^{1}$, John Downer$^{1}$, Graham Deacon$^{2}$, Jonathan Rossiter$^{1}$, Kerstin Eder$^{1}$, Shane Windsor$^{1}$% 
-\thanks{$^{1}$D. B. Abeywickrama*, N. H. Le, G. Chance, P. D. Winter, A. Manzini, A. J. Partridge, J. Ives, J. Downer, J. Rossiter,  K. Eder and S. Windsor are with University of Bristol, UK
+\thanks{$^{1}$D. B. Abeywickrama*, N. H. Le, G. Chance, P. D. Winter, A. Manzini, A. J. Partridge, J. Ives, J. Downer, J. Rossiter,  K. Eder and S. Windsor are with the University of Bristol, UK
 	{\tt\small firstname.lastname@bristol.ac.uk}}%
 \thanks{$^{2}$G. Deacon is with the Robotics Research Team, Ocado Technology, UK
 	{\tt\small graham.deacon@ocado.com}}%	
@@ -102,9 +102,15 @@
 	\begin{abstract}
 	Soft robotics is an emerging technology in which engineers create flexible devices for use in a variety of applications.
 	In order to advance the wide adoption of soft robots, ensuring their trustworthiness is essential; if soft robots are not trusted, they will not be used to their full potential. 
-	In order to demonstrate trustworthiness, we first need to formulate a \emph{specification} to define what is trustworthy. However, this has received very little attention from the soft robotics community. 
+	In order to demonstrate trustworthiness, we first need to formulate a \emph{specification} to define what is trustworthy. 
+	However, even for soft robotic grippers, which is one of the most mature areas in soft robotics, the soft robotics community has so far given very little attention to formulating specifications. 
 	In this work, we discuss the importance of developing specifications during development of soft robotic systems, and present an extensive example specification for a soft gripper for pick-and-place tasks for grocery items. The proposed specification covers both functional and non-functional requirements, such as reliability, safety, adaptability, predictability, ethics, and regulations.  
-	We also highlight the need to promote \emph{verifiability} as a first-class objective in the design of a soft gripper.		
+	We also highlight the need to promote \emph{verifiability} as a first-class objective in the design of a soft gripper.	
+%	Soft robotics is an emerging technology in which engineers create flexible devices for use in a variety of applications.
+%	In order to advance the wide adoption of soft robots, ensuring their trustworthiness is essential; if soft robots are not trusted, they will not be used to their full potential. 
+%	In order to demonstrate trustworthiness, we first need to formulate a \emph{specification} to define what is trustworthy. However, this has received very little attention from the soft robotics community. 
+%	In this work, we discuss the importance of developing specifications during development of soft robotic systems, and present an extensive example specification for a soft gripper for pick-and-place tasks for grocery items. The proposed specification covers both functional and non-functional requirements, such as reliability, safety, adaptability, predictability, ethics, and regulations.  
+%	We also highlight the need to promote \emph{verifiability} as a first-class objective in the design of a soft gripper.		
 	\end{abstract}
 	
 %	\begin{IEEEkeywords}
@@ -118,16 +124,15 @@
 	In order to advance the wide adoption of soft robots, ensuring their trustworthiness is essential. 
 	%According to Mason \cite{Mason1985}, the central issue in robotic manipulation is how to deal with uncertainty. % has been mentioned as the central issue in robotic manipulation \cite{Mason1985}. % Cut by Shane
 	\emph{Trust} may vary, as it can be gained and lost over time, and different research disciplines define trust in different ways; in comparison something is \emph{trustworthy} when it is deserving of trust.
-	
-	
+
 	Autonomous systems (AS) (e.g. soft robotic systems) are considered \emph{trustworthy} when the design, engineering, and operation of these systems generate positive outcomes and mitigate outcomes which can be harmful~\cite{Naiseh2022}.
 	% Consider cutting this paragraph - Shane
-	Trustworthiness can be dependent on many factors such as: (i) explainability, accountability, and understandability to different users; (ii) robustness in dynamic and uncertain environments; (iii) assurance of their design and operation through verification and validation (V\&V) activities; (iv) confidence in their ability to adapt their functionality as required; (v) security against attacks on the systems, users, and deployed environment; (vi) governance and regulation of their design and operation; and (vii) consideration of ethics and human values in their deployment and use~\cite{Naiseh2022}. 
+	Trustworthiness can be dependent on many factors such as: (i) explainability, accountability, and understandability to different users; (ii) robustness in dynamic and uncertain environments; (iii) assurance of their design and operation through verification and validation (V\&V) activities; (iv) confidence in their ability to adapt their functionality; (v) security against attacks; (vi) governance and regulation of their design and operation; and (vii) consideration of ethics and human values in their deployment and use~\cite{Naiseh2022}. 
 	
 	%The central issue in robotic maltipulation is how to dealwith unccrtainty in Lhe locations and shapes of objects.Humans are cnpablc of effective manipulation in unstructurcd,unprcdictable environments, but robots are not.This deficiency of robots has been addressed in two ways.Most industrial robots finesse the uncertainty problem byorganizing the cnvironme~~t, using special tools to feedand hold parts precisely. A few incluslrial robots usesensors to reduce uncertainty. Most rcsearch laboratoryrobots use the same two approaches-the environment iscon?rolled or scnsors are used.
 	
 	There are various techniques for demonstrating the trustworthiness of a system, such as formal verification at design-time, monitoring and runtime verification, synthesis and test-based methods \cite{Abeywickrama2022}. 
-	However, common to all these techniques is the need to formulate \emph{specifications}. According to the ISO standard for systems and software engineering vocabulary~\cite{ISO24765:2017}, a \emph{specification} is a detailed formulation that provides a definitive description of a system for the purpose of developing or validating the system. 
+	However, common to all these techniques is the need to formulate \emph{specifications}. According to the ISO standard for systems and software engineering vocabulary~\cite{ISO24765:2017}, a \emph{specification} is a detailed formulation that provides ``a definitive description of a system for the purpose of developing or validating the system''. 
 	
 	\emph{Soft robotic grippers} for manipulating objects are considered to be one of the most mature areas in soft robotics. 
 	However, even for this relatively well advanced application area the soft robotics community has so far given very little attention to formulating specifications (e.g. \cite{Shi2023,Cheng2021,Liu2021,Chen2018,Cai2021,Hwang2020,Shin2021}).  Creating a specification as part of a development process is an important step in which the requirements for the system are agreed and defined precisely. % Dhaminda - remvoed formal word as we are not proposing a "formal" specification. It is a high-level, wide-ranging specification.
@@ -144,20 +149,20 @@
 	\end{itemize}
 	We explore this novel topic using a case study of pick-and-place tasks of grocery items \cite{Triantafyllou2019, Sotiropoulos2018} involving a recycled soft gripper \cite{Partridge2022}. 
 	
-	The rest of the paper is organized as follows. 
+	The rest of the paper is organised as follows. 
 	%In Section~\ref{background-relatedwork}, we provide background and related work, and a brief description of the case study. %to our study. 
 	In Section~\ref{background-relatedwork}, we provide background information to this work, key related works, and a brief description of the case study. %to our study. 
-	Section~\ref{specification-gripper} provides a detailed specification of a soft gripper, and in Section~\ref{verifiability}, we highlight the significance of promoting verifiability.
+	Section~\ref{specification-gripper} provides a detailed specification of a soft gripper, and Section~\ref{verifiability} highlights the significance of promoting verifiability.
 	Finally, Section~\ref{summary-conclusions} concludes the paper. 	
 	
-	\section{BACKGROUND AND CASE STUDY}\label{background-relatedwork}
+	\section{BACKGROUND}\label{background-relatedwork}
 	
 	\subsection{Background}\label{background}
 	\subsubsection{Recycled Soft Gripper}
 	%[Short Summary of recycled soft gripper paper by \cite{Partridge2022}, which is used in the current study]
 	%\textbf{[Alix Partridge to provide this short subsection -- about 300 words]}
 	%\\\\\\
-	The soft robotic gripper used in this work is a two-finger fluidic elastomer actuator, measuring 12 x 134 x 6 mm \cite{Partridge2022}. The gripper is fabricated using a two-part moulding process with a fabric-constraining layer and comprises a mix of 70\% pristine EcoFlex 00-30 silicone elastomer and 30\% recycled EcoFlex 00-30 granules that are 1 mm to 2 mm in size.%, as detailed in \cite{Partridge2022}. %within Partridge et al. (https://ieeexplore.ieee.org/document/9762170).
+	The soft robotic gripper used in this work is a two-finger fluidic elastomer actuator, measuring 12 x 134 x 6 mm \cite{Partridge2022} (see Fig.\ref{gripper}). The gripper is fabricated using a two-part moulding process with a fabric-constraining layer and comprises a mix of 70\% pristine EcoFlex 00-30 silicone elastomer and 30\% recycled EcoFlex 00-30 granules that are 1 mm to 2 mm in size.%, as detailed in \cite{Partridge2022}. %within Partridge et al. (https://ieeexplore.ieee.org/document/9762170).
 	
 	%\todo[size=\tiny]{Shane: It would be great to add a figure of the gripper here}
 	\begin{figure}
@@ -165,6 +170,7 @@
 		\includegraphics[width=0.4\textwidth]{figures/recycledsoftgripper.jpg}%s[width=0.85\textwidth]
 		\caption{A soft gripping system with one pristine silicone finger and another which contains 30\% recycle silicone material grasping a fresh egg.}
 		\label{gripper}
+		\vspace{-1.3ex}
 	\end{figure}
 	%	\caption{An interchangeable gripping system shown with one pristine silicone finger and one comprised of 30\% recycle silicone materialSoft gripper. The gripper is shown successfully grasping a fresh egg.}
 	
@@ -174,7 +180,7 @@
 	Although no direct industry standards have been defined for soft grippers so far, there are several standards in the area of rigid robotics that provide: (i) a set of terminology and definitions for robotic grippers (ISO 14539:2000) and hands \cite{Falco2018}); and (ii) guidance related to the safe spaces, speeds, and forces that a gripping system needs to function (ISO 10218-1/10218-2, and ISO/TS 15066). %In 2022, the ASTM International's committee on robotics, automation, and autonomous systems (F45) formed a new subcommittee on grasping and manipulation, which will develop standards that evaluate performance of grasping type end-effectors.  
 	
 	\subsection{Related Work}\label{relatedwork}
-	Most existing approaches (e.g. \cite{Netzev2023,Hong2022,Bhattacharya2019,Tadakuma2020,Loh2014,Nishikawa2019,Mohan2020}) only describe some technical requirements and parameters of the end-effector to drive its physical design, such as its dimensions, weight, and material properties. For example, Netzev et al.~\cite{Netzev2023} list several technical requirements needed to achieve desired outcome of blind grasping, such as dimensions and heights of the largest and smallest objects that can be gripped, maximum object weight, and gripping force. 
+	Most existing approaches (e.g. \cite{Netzev2023,Hong2022,Bhattacharya2019,Tadakuma2020,Loh2014,Nishikawa2019,Mohan2020}) only describe some technical requirements and parameters of the end-effector to drive its physical design, such as its dimensions, weight, and material properties. For example, Netzev et al.~\cite{Netzev2023} list several technical requirements needed to achieve the desired outcome of their grasping method, such as dimensions and heights of the largest and smallest objects that can be gripped, maximum object weight, and gripping force. 
 	Also, most specifications provided for soft grippers only describe their functional requirements (e.g. \cite{Shi2023}), and only a few approaches describe non-functional requirements, such as \emph{adaptability} and \emph{performance} (e.g. \cite{Cheng2021,Liu2021,Chen2018,Cai2021,Hwang2020,Shin2021}).  
 	For example, Shi el al. \cite{Shi2023} summarise functional requirements for the characterisation of soft robots with regard to
 	their force, dynamics, and stiffness identification. 
@@ -241,7 +247,7 @@
 	%Furthermore, most existing approaches (e.g. \cite{Hong2022,Bhattacharya2019,Tadakuma2020,Loh2014,Nishikawa2019,Mohan2020}) only describe some parameters of the end-effector, such as their dimensions, weight, and material properties.%%%%%, and no work proposes a wide-ranging specification for trustworthiness.%, as proposed in our study.
 	
 	\subsection{Case Study: Pick-and-Place Tasks of Grocery Items}
-	Let us consider an automated warehouse, where items are picked from storage crates using a soft robotics gripper and are then placed in delivery crates for delivery. 
+	Let us consider an automated warehouse, where items are picked from storage crates using a soft robotic gripper and are then placed in delivery crates for delivery. 
 	An example grocery use case is that of Ocado, which is considered the world's largest online-only supermarket \cite{Triantafyllou2019, Sotiropoulos2018}. 
 	A range of uncertainties make automation of this process challenging: (i) items can vary in their shape, size, packaging, and orientation; (ii) some items are fragile or deformable; (iii) geometrically constrained and relatively cluttered operating environment~\cite{Triantafyllou2019}; (iv) manufacturing inconsistencies (low tolerances) in the gripper; and (v) elastic nature of the materials used in the gripper, which can lead to performance degradation.
 	
@@ -251,9 +257,12 @@
 \section{SPECIFICATION OF A SOFT GRIPPER}\label{specification-gripper}
 	In this section, we present an example of a wide-ranging specification with functional and non-functional properties which affect the trustworthiness of a soft gripper. We define these in terms of predictability, reliability, adaptability, safety, ethics, and regulations (see Fig.\ref{SR-spec}). 
 	
-	This example specification was developed through consultation with soft robotic developers, industrial users, ethicists and sociologists. It is an example of the aspects that may need to be specified for a soft gripper rather than a complete specification for every aspect of the system. The specification includes functional requirements -- those needed to achieve the technical task, and non-functional requirements -- those related to the broader operation of the system, such as ethical and regulatory considerations. % added by Shane  
+	This example specification was developed through consultation with requirement engineers, soft robotic developers, industrial users, ethicists, and sociologists. It is an example of the aspects that may need to be specified for a soft gripper rather than an exhaustive specification for every aspect of the system. 
+	The specification includes functional requirements -- those that specify behaviour the system shall perform~\cite{ISO24765:2017}; and non-functional requirements -- those that specify not what the system will do but how it will do it (quality attributes)~\cite{ISO24765:2017}.
+	%The specification includes functional requirements -- those needed to achieve the technical task, and non-functional requirements -- those related to the broader operation of the system, such as ethical and regulatory considerations. 
+	% added by Shane  ; edited by Dhaminda
 	%This example specification was developed through consultation with soft robotic developers, industrial users, ethicists, sociologists and from published requirements. Dhaminda - I have edited this sentece. I don't think we took "any published requirements". All the shall statements in the paper we developed. 
-	The engineering requirements (iii a--d) are formulated as `shall' statements following the guidance on writing good requirements \cite{NASA2007}, and the ethics and the regulatory requirements (iii e--f) are discussed using key frameworks from ethics~\cite{Porter2023} and sociology~\cite{Macrae2022}. 
+	The engineering requirements (iii a--d) are formulated as `shall' statements following the guidance on writing good requirements \cite{NASA2007}, and the ethics and the regulatory requirements (iii e--f) are discussed using key frameworks from ethics~\cite{Porter2023} and social science~\cite{Macrae2022}. 
 	
 	Below we define the set of requirements \{RQx\} for a soft gripper across these six properties.
 	We define the boundaries to measure the success of gripping an item using the conventional bounds of 95\% for success and 5\% for failure. 
@@ -332,7 +341,7 @@
 	
 	%\emph{Structural} sources of risk arise from interactions between different human and nonhuman elements that amplify or transmit local failures in a system in ways that disable the entire system. 
 	\emph{Structural} sources of risk arise from interactions between human and nonhuman elements in a system.
-	In a pick-and-place task, such risks may arise from unanticipated disruptions, such as a human moving a grocery item, confusing the perception system. Regulatory requirements should ensure that the system anticipates and accommodates the complexities of human?machine interactions.
+	In a pick-and-place task, such risks may arise from unanticipated disruptions, such as a human moving a grocery item, confusing the perception system. Regulatory requirements should ensure that the system anticipates and accommodates the complexities of human-machine interactions.
 	
 	\emph{Organisational} sources of risk emerge when organisational structures, such as rules and expectations, are insensitive to the vagaries of real human behaviour. For example, protocols for checking capabilities required for grasping might presuppose an unrealistic degree of diligence. Regulatory requirements should be alert to the practical dimensions of potential rules and procedures.
 	
@@ -348,7 +357,7 @@
 	In addition to formulating a well-defined specification as discussed in the preceding section, \emph{verifiability} can also be explored to improve the trustworthiness of a soft robotic gripper. 
 	Verification is the process that can be used to gain confidence in the correctness of a system with respect to its specification~\cite{Bergeron2000}. 
 	Verifiability can be achieved by considering verification early, such as during specification and system design \cite{Mousavi2022}, where it can be promoted to a primary system design objective \cite{Eder2021}.
-	A unified and holistic approach to verifiability will lead to systems that are by their construction worthy of our trust \cite{Mousavi2022}. 
+	A unified and holistic approach to verifiability will lead to systems that are, by their construction, are worthy of our trust \cite{Mousavi2022}. 
 	
 	For a system to be {\em verifiable\/}, a person or a tool needs to be able to check its correctness~\cite{ISO24765:2017} with respect to its requirements and specification \cite{Abeywickrama2022}. 
 	The main challenge is in specifying and designing the system in such a way that this process is made as easy and intuitive as possible.
@@ -376,10 +385,10 @@
 	The curvature with time can be determined by conducting image processing on the video, and the internal pressure with time can be monitored.
 	
 	%Following the guidance on writing good requirements provided in \cite{NASA2007}, the requirements in Section~\ref{specification-gripper} have been formulated positively (i.e. use of \emph{shall} statements as opposed to \emph{shall not} statements). 
-	As mentioned previously, following the guidance provided in \cite{NASA2007}, the engineering requirements (iii a--d) have been formulated. 
+	As mentioned previously, the engineering requirements (iii a--d) have been formulated by following the guidance provided in~\cite{NASA2007}. 
 	On the one hand, most engineering specifications contain numeric tolerances. 
 	For example, RQ1.5 identifies a specific pressure range. 
-	Similarly, in RQ4.4, we identify a maximum value of 2 N for gripping force when gripping a hard?fragile item. 
+	Similarly, in RQ4.4, we identify a maximum value of 2 N for gripping force when gripping a hard-fragile item. 
 	On the other hand, there are several high-level requirements which need to be refined into verifiable terms before any verification method can be applied.  
 	For instance, requirements RQ1.1--1.3 have been formulated at a high-level because the amount of curvature and straightening of a finger can often be dependent on the application. 
 	In order to be verifiable, we can refine RQ1.1 as: the fingers of the gripper \emph{shall} curve within 2\% of a curve of 10 cm radius when inflated. 
@@ -387,7 +396,7 @@
 	This can be verified by monitoring the distance between each of the joints of the gripping system to ensure that there is no collision between the body of the gripping system and the item. 
 	Meanwhile, with respect to RQ4.1, one does not need to impose an initial velocity on the food item in the test bed, so this requirement can be met by design (i.e. no need to formally verify or monitor it).
 	
-	Thus, this work provides two versions of the specification for a soft robotic gripper -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} one, for which, through examples, we demonstrate how to make it verifiable. 
+	As discussed, this work provides two versions of the specification for a soft robotic gripper -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} one, for which, through examples, we demonstrate how to make it verifiable. 
 	By doing this, we show the difference between a high-level requirement and its verifiable version. 
 	In this manner, this work not only provides a wide-ranging specification for a pick-and-place application, but goes a step further by providing high-level design guidelines on formulating verifiable requirements for the soft robotics community. % requirements verifiable.
 	
@@ -420,7 +429,7 @@
 			\hline
 			RQ4.6 & Both \emph{Practical tests}: functional test, and \emph{Measurement}: displacement sensor \\ 
 			\hline
-		\end{tabular}\vspace{-3ex}
+		\end{tabular}\vspace{-2.7ex}
 	\end{table}
 
 \section{CONCLUSION} \label{summary-conclusions}%Summary and Conclusions
