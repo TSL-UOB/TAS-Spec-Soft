@@ -148,7 +148,8 @@
 	Therefore, the main contributions of this paper are as follows:
 	\begin{itemize}
 		\item We provide an extensive example specification to ensure the trustworthiness of a soft robotic gripper \cite{Partridge2022} with both functional and non-functional requirements, such as reliability, safety, adaptability, predictability, ethics, and regulations.
-		\item We highlight the importance of promoting \emph{verifiability} as a first-class objective in the design of a soft robotic gripper. Also, we provide high-level design guidelines on formulating verifiable requirements. 
+		\item We highlight the importance of promoting \emph{verifiability} as a first-class objective in the design of a soft robotic gripper. Also, we provide illustrations of how to formulate verifiable requirements for soft grippers.
+		%Also, we provide high-level design guidelines on formulating verifiable requirements. 
 	\end{itemize}
 	We explore this novel topic using a case study of pick-and-place tasks of grocery items \cite{Triantafyllou2019, Sotiropoulos2018} involving a recycled soft gripper \cite{Partridge2022}. 
 	
@@ -171,9 +172,9 @@
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.4\textwidth]{figures/recycledsoftgripper.jpg}%s[width=0.85\textwidth]
-		\caption{A soft gripping system with one pristine silicone finger and a second finger containing 30\% recycle silicone material grasping a fresh egg.}
+		\caption{A soft gripping system with one pristine silicone finger and a second finger containing 30\% recycle silicone material grasping a fresh egg~\cite{Partridge2022}.}
 		\label{gripper}
-		\vspace{-1.3ex}
+		%\vspace{-1.3ex}
 	\end{figure}
 	%	\caption{An interchangeable gripping system shown with one pristine silicone finger and one comprised of 30\% recycle silicone materialSoft gripper. The gripper is shown successfully grasping a fresh egg.}
 	
@@ -374,11 +375,10 @@
 	(iii) managing the inherent complexity and heterogeneity of both the AS and the environment it operates in. 
 	
 	Gerson~\cite{Gerson1993} identifies several techniques for ensuring verifiability: bounding the verification task, prioritising effort, ensuring traceability, and breaking down high-level requirements into verifiable portions. 
-	According to Gerson, formulating requirements for verifiability should go far beyond avoiding negative requirements and including numerical tolerances, but also aim to \emph{design for verifiability}. 
+	According to Gerson~\cite{Gerson1993}, formulating requirements for verifiability should go far beyond avoiding negative requirements and including numerical tolerances, but also aim to \emph{design for verifiability}. 
 	This is because the ultimate purpose of specifications is verifying that the end product exhibits the intended properties. 
 	This requires the intended properties to be \emph{demonstrable}; that is, knowledge of the end result needs to be attainable. 
 	In this work, we have considered this early when formulating requirements, by planning and confirming how these properties can be verified subsequently (see Table~\ref{Table:Verifiability}). 
-	
 	For example, requirements RQ1.1, 1.2, 1.4, 2.1, 2.2, and 2.4 can be verified by \emph{observing} the gripping system during operation. 
 	Observation is ``a technique that provides a direct way of viewing individuals in their environment performing their jobs or tasks and carrying out processes"~\cite{ISO24765:2017}.
 	Let us describe a unit test that can be conducted to verify requirement RQ1.5. 
@@ -389,7 +389,7 @@
 	
 	%Following the guidance on writing good requirements provided in \cite{NASA2007}, the requirements in Section~\ref{specification-gripper} have been formulated positively (i.e. use of \emph{shall} statements as opposed to \emph{shall not} statements). 
 	As mentioned previously, the engineering requirements (iii a--d) have been formulated by following the guidance provided in~\cite{NASA2007}. 
-	On the one hand, most engineering specifications contain numeric tolerances. 
+	On the one hand, most engineering requirements contain numeric tolerances (verifiable). 
 	For example, RQ1.5 identifies a specific pressure range. 
 	Similarly, in RQ4.4, we identify a maximum value of 2 N for gripping force when gripping a hard-fragile item. 
 	On the other hand, there are several high-level requirements which need to be refined into verifiable terms before any verification method can be applied.  
@@ -397,10 +397,10 @@
 	In order to be verifiable, we can refine RQ1.1 as: the fingers of the gripper \emph{shall} curve within 2\% of a curve of 10 cm radius when inflated. 
 	Similarly, we can refine requirement RQ4.2 as: no part of the body of gripping system \emph{shall} have a position equal to the position of the item being grasped. 
 	This can be verified by monitoring the distance between each of the joints of the gripping system to ensure that there is no collision between the body of the gripping system and the item. 
-	Meanwhile, with respect to RQ4.1, one does not need to impose an initial velocity on the food item in the test bed, so this requirement can be met by design (i.e. no need to formally verify or monitor it).
+	Meanwhile, with respect to RQ4.1, one does not need to impose an initial velocity on the food item in the test bed, so this requirement can be met by design (i.e. no need to formally verify or monitor it). Thus, the above examples illustrate two versions of the specification for a soft robotic gripper -- one a \emph{verifiable} one from the start (e.g. RQ1.5, RQ4.4); and the other a more \emph{high-level}, unrefined one (e.g. RQ1.1, RQ4.2), for which, through examples, we demonstrate how to make it verifiable. In this manner, this work not only provides a wide-ranging specification for a pick-and-place application, but also provides illustrations of how to formulate verifiable requirements for soft grippers. 
 
-	The above examples show how a specification can be written to be verifiable based on an initial high-level requirement.
-	In this manner, this work not only provides a wide-ranging specification for a pick-and-place application, but also provides illustrations of how to formulate verifiable requirements for soft robotics. % requirements verifiable.
+%	The above examples show how a specification can be written to be verifiable based on an initial high-level requirement.
+%	In this manner, this work not only provides a wide-ranging specification for a pick-and-place application, but also provides illustrations of how to formulate verifiable requirements for soft robotics. 
  
 %	As discussed, this work provides two versions of the specification for a soft robotic gripper -- one a \emph{verifiable} one from the start, and the other a more \emph{high-level} one, for which, through examples, we demonstrate how to make it verifiable. 
 %	By doing this, we show the difference between a high-level requirement and its verifiable version. 
@@ -442,8 +442,9 @@
 	As soft robotics continue to expand into new and diverse industries it is important to consider the design processes used, particularly the development of detailed specifications which can be used to define the requirements for a system and ensure that both functional and non-functional aspects are considered from an early stage of the development process.
 	Within soft robotics, soft gripping is considered to be one of the most mature areas. 
 	For wider adoption and acceptability, we must build soft grippers worthy of our trust. 
-	In this context, this work proposed an extensive \emph{specification} for a soft gripper covering several functional and non-functional properties, including predictability, reliability, adaptability, safety, ethics, and regulations.
-	In addition, we promoted the notion of \emph{verifiability} of a soft gripper as a first-class design objective, and identified several high-level design guidelines on formulating verifiable requirements. 
+	In this context, this work proposed an extensive \emph{specification} for a soft gripper covering several functional and non-functional properties, including predictability, reliability, adaptability, safety, ethics, and regulations. 
+	In addition, we promoted the notion of \emph{verifiability} of a soft gripper as a first-class design objective, and provided illustrations of how to formulate verifiable requirements.  
+	%In addition, we promoted the notion of \emph{verifiability} of a soft gripper as a first-class design objective, and identified several high-level design guidelines on formulating verifiable requirements. 
 	This work was explored using the pick-and-place tasks of grocery items in an automated warehouse. 
  We conclude that specifying for trustworthiness in soft robotics as complete systems for real world applications should use a multi-disciplinary approach with inputs from a range of experts including soft roboticists and engineers, as well as experts from the social sciences and humanities.  A multi-disciplinary approach will help ensure that any specification covers both functional and non-functional requirements and will help develop trustworthy soft robots.
  
